@@ -1,0 +1,696 @@
+{
+  "schema_version": 67,
+  "autoRefresh": {
+    "enabled": true,
+    "defaultInterval": "1s"
+  },
+  "tiles": [
+    {
+      "id": "6ae34e3b-ae09-4c65-946d-f6b2af85d495",
+      "title": "Última actualización",
+      "visualType": "card",
+      "pageId": "ebcc5c71-59b4-44dd-b7c1-147d486c6bbf",
+      "layout": {
+        "x": 4,
+        "y": 0,
+        "width": 7,
+        "height": 3
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "db6d56b2-7fc4-4404-923a-81873f915455"
+      },
+      "visualOptions": {
+        "multiStat__textSize": "auto",
+        "multiStat__valueColumn": "serverTime",
+        "colorRulesDisabled": true,
+        "colorRules": []
+      }
+    },
+    {
+      "id": "81999246-088e-47d6-8313-25326cf2da17",
+      "title": "Nº de criptomonedas",
+      "visualType": "card",
+      "pageId": "ebcc5c71-59b4-44dd-b7c1-147d486c6bbf",
+      "layout": {
+        "x": 4,
+        "y": 3,
+        "width": 7,
+        "height": 3
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "72d2ade0-274b-472f-960c-cf1ce92baf0e"
+      },
+      "visualOptions": {
+        "multiStat__textSize": "auto",
+        "multiStat__valueColumn": "Cryptocurrencies",
+        "colorRulesDisabled": false,
+        "colorRules": []
+      }
+    },
+    {
+      "id": "ca7adbb4-c3cb-44e7-9108-d090c9bbfbaf",
+      "title": "Top 5 criptomonedas por precio (EUR)",
+      "visualType": "column",
+      "pageId": "ebcc5c71-59b4-44dd-b7c1-147d486c6bbf",
+      "layout": {
+        "x": 0,
+        "y": 6,
+        "width": 11,
+        "height": 4
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "868783ee-b1c9-44cf-b96e-caa04f8a8306"
+      },
+      "visualOptions": {
+        "multipleYAxes": {
+          "base": {
+            "id": "-1",
+            "label": "",
+            "columns": [],
+            "yAxisMaximumValue": null,
+            "yAxisMinimumValue": null,
+            "yAxisScale": "linear",
+            "horizontalLines": []
+          },
+          "additional": [],
+          "showMultiplePanels": false
+        },
+        "hideLegend": false,
+        "legendLocation": "bottom",
+        "xColumnTitle": "",
+        "xColumn": "symbol",
+        "yColumns": [
+          "price"
+        ],
+        "seriesColumns": null,
+        "xAxisScale": "linear",
+        "verticalLine": "",
+        "crossFilter": [],
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "forceAxisTicks": false,
+        "drillthrough": []
+      }
+    },
+    {
+      "id": "928323ca-a291-49c3-ab81-33cdbf3889fd",
+      "title": "Distribución por rango de precios",
+      "visualType": "pie",
+      "pageId": "ebcc5c71-59b4-44dd-b7c1-147d486c6bbf",
+      "layout": {
+        "x": 11,
+        "y": 0,
+        "width": 11,
+        "height": 10
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "b9da838a-d6b3-4c13-ae4b-46bcd45e49b9"
+      },
+      "visualOptions": {
+        "hideLegend": false,
+        "legendLocation": "bottom",
+        "xColumn": "priceRange",
+        "yColumns": [
+          "count_"
+        ],
+        "seriesColumns": null,
+        "crossFilter": [],
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "labelDisabled": false,
+        "pie__label": [
+          "name",
+          "percentage"
+        ],
+        "tooltipDisabled": false,
+        "pie__tooltip": [
+          "name",
+          "percentage",
+          "value"
+        ],
+        "pie__orderBy": "size",
+        "pie__kind": "pie",
+        "pie__topNSlices": null,
+        "drillthrough": []
+      }
+    },
+    {
+      "id": "0742c5bd-1ae7-46d6-8b57-c5da9a43d928",
+      "title": "Nuevo icono",
+      "visualType": "markdownCard",
+      "pageId": "ebcc5c71-59b4-44dd-b7c1-147d486c6bbf",
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "width": 4,
+        "height": 6
+      },
+      "markdownText": "![Binance](https://th.bing.com/th/id/R.92d4f7ef666ddb42051d90f0333df1cf?rik=Rw5e3HhVIbBAng&riu=http%3a%2f%2ffreelogopng.com%2fimages%2fall_img%2f1681906406binance-icon-png.png&ehk=zKWRuKmvAqHAESxhJN0LnJWOczq0vpRcKTKxNrZMaZQ%3d&risl=&pid=ImgRaw&r=0 \"Binance\")\n",
+      "visualOptions": {}
+    },
+    {
+      "id": "7fb6af80-5ec9-41d4-9b48-18519679d426",
+      "title": "Logo",
+      "visualType": "markdownCard",
+      "pageId": "f510a31b-439f-4157-89a8-e722448bd521",
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "width": 4,
+        "height": 6
+      },
+      "markdownText": "   ![Binance](https://th.bing.com/th/id/R.92d4f7ef666ddb42051d90f0333df1cf?rik=Rw5e3HhVIbBAng&riu=http%3a%2f%2ffreelogopng.com%2fimages%2fall_img%2f1681906406binance-icon-png.png&ehk=zKWRuKmvAqHAESxhJN0LnJWOczq0vpRcKTKxNrZMaZQ%3d&risl=&pid=ImgRaw&r=0 \"Binance\")\n",
+      "visualOptions": {}
+    },
+    {
+      "id": "1340e3f8-b5eb-4b60-bc25-aca9fc7b15fb",
+      "title": "Nuevo icono",
+      "hideTitle": true,
+      "visualType": "card",
+      "pageId": "f510a31b-439f-4157-89a8-e722448bd521",
+      "layout": {
+        "x": 4,
+        "y": 0,
+        "width": 3,
+        "height": 6
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "73cd2ba0-d224-400f-a2da-3615b1eb0bcd"
+      },
+      "visualOptions": {
+        "multiStat__textSize": "auto",
+        "multiStat__valueColumn": null,
+        "colorRulesDisabled": false,
+        "colorRules": []
+      }
+    },
+    {
+      "id": "878a536b-c17c-4f77-8a62-6315040c169d",
+      "title": "Precio máximo",
+      "visualType": "card",
+      "pageId": "f510a31b-439f-4157-89a8-e722448bd521",
+      "layout": {
+        "x": 7,
+        "y": 0,
+        "width": 4,
+        "height": 3
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "8d95a3d3-c63e-4915-bf10-586dfea2ff2b"
+      },
+      "visualOptions": {
+        "multiStat__textSize": "auto",
+        "multiStat__valueColumn": null,
+        "colorRulesDisabled": false,
+        "colorRules": []
+      }
+    },
+    {
+      "id": "ff387295-8634-469b-af8c-bca7c4c02327",
+      "title": "Precio actual",
+      "visualType": "card",
+      "pageId": "f510a31b-439f-4157-89a8-e722448bd521",
+      "layout": {
+        "x": 11,
+        "y": 0,
+        "width": 4,
+        "height": 6
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "4b33c1ca-7974-4eda-8643-0de78c8ae70c"
+      },
+      "visualOptions": {
+        "multiStat__textSize": "auto",
+        "multiStat__valueColumn": null,
+        "colorRulesDisabled": false,
+        "colorRules": []
+      }
+    },
+    {
+      "id": "37b232a3-ac99-40ae-ad12-ccfcc9b6cc0c",
+      "title": "Variación % (Máx vs Mín)",
+      "visualType": "card",
+      "pageId": "f510a31b-439f-4157-89a8-e722448bd521",
+      "layout": {
+        "x": 15,
+        "y": 0,
+        "width": 4,
+        "height": 3
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "25a8014f-f785-4dfd-9dfc-6b221718e6e2"
+      },
+      "visualOptions": {
+        "multiStat__textSize": "small",
+        "multiStat__valueColumn": null,
+        "colorRulesDisabled": false,
+        "colorRules": [
+          {
+            "id": "f7cf9a9a-430c-4bf2-afdb-541e115a8666",
+            "ruleType": "colorByCondition",
+            "applyToColumn": null,
+            "hideText": false,
+            "applyTo": "cells",
+            "conditions": [
+              {
+                "operator": ">",
+                "column": "variation_pct",
+                "values": [
+                  "0"
+                ]
+              }
+            ],
+            "chainingOperator": "and",
+            "colorStyle": "light",
+            "color": "green",
+            "tag": "",
+            "icon": "arrowUp",
+            "ruleName": "",
+            "visualType": "card"
+          },
+          {
+            "id": "e4b3b1c6-2abd-4e5c-8837-80120ad661b3",
+            "ruleType": "colorByCondition",
+            "applyToColumn": null,
+            "hideText": false,
+            "applyTo": "cells",
+            "conditions": [
+              {
+                "operator": "==",
+                "column": "variation_pct",
+                "values": [
+                  "0"
+                ]
+              }
+            ],
+            "chainingOperator": "and",
+            "colorStyle": "light",
+            "color": "blue",
+            "tag": "",
+            "icon": null,
+            "ruleName": "",
+            "visualType": "card"
+          },
+          {
+            "id": "a6e6cd52-8116-4bf5-b882-f7a5f0c1bd55",
+            "ruleType": "colorByCondition",
+            "applyToColumn": null,
+            "hideText": false,
+            "applyTo": "cells",
+            "conditions": [
+              {
+                "operator": "<",
+                "column": "variation_pct",
+                "values": [
+                  "0"
+                ]
+              }
+            ],
+            "chainingOperator": "and",
+            "colorStyle": "light",
+            "color": "red",
+            "tag": "",
+            "icon": "arrowDown",
+            "ruleName": "",
+            "visualType": "card"
+          }
+        ]
+      }
+    },
+    {
+      "id": "0ece6cce-3544-43a0-b1d5-659b78d583f0",
+      "title": "Variación % (Actual vs Último)",
+      "visualType": "card",
+      "pageId": "f510a31b-439f-4157-89a8-e722448bd521",
+      "layout": {
+        "x": 15,
+        "y": 3,
+        "width": 4,
+        "height": 3
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "ccc73c54-0791-4a64-bd5e-fb69cf67009a"
+      },
+      "visualOptions": {
+        "multiStat__textSize": "small",
+        "multiStat__valueColumn": "variation_pct",
+        "colorRulesDisabled": false,
+        "colorRules": [
+          {
+            "id": "f3816428-925a-4bec-bdf1-7f9d1df221ff",
+            "ruleType": "colorByCondition",
+            "applyToColumn": null,
+            "hideText": false,
+            "applyTo": "cells",
+            "conditions": [
+              {
+                "operator": ">",
+                "column": "variation_pct",
+                "values": [
+                  "0"
+                ]
+              }
+            ],
+            "chainingOperator": "and",
+            "colorStyle": "light",
+            "color": "green",
+            "tag": "",
+            "icon": "arrowUp",
+            "ruleName": "",
+            "visualType": "card"
+          },
+          {
+            "id": "f684cadf-d1cf-46d1-a25d-bb1ecb679245",
+            "ruleType": "colorByCondition",
+            "applyToColumn": null,
+            "hideText": false,
+            "applyTo": "cells",
+            "conditions": [
+              {
+                "operator": "==",
+                "column": "variation_pct",
+                "values": [
+                  "0"
+                ]
+              }
+            ],
+            "chainingOperator": "and",
+            "colorStyle": "light",
+            "color": "blue",
+            "tag": "",
+            "icon": null,
+            "ruleName": "",
+            "visualType": "card"
+          },
+          {
+            "id": "a469f4ef-68e4-49a7-b345-9f843192a371",
+            "ruleType": "colorByCondition",
+            "applyToColumn": null,
+            "hideText": false,
+            "applyTo": "cells",
+            "conditions": [
+              {
+                "operator": "<",
+                "column": "variation_pct",
+                "values": [
+                  "0"
+                ]
+              }
+            ],
+            "chainingOperator": "and",
+            "colorStyle": "light",
+            "color": "red",
+            "tag": "",
+            "icon": "arrowDown",
+            "ruleName": "",
+            "visualType": "card"
+          }
+        ]
+      }
+    },
+    {
+      "id": "573e97a3-a82a-474c-8d50-4df7dbd1309b",
+      "title": "Precio mínimo",
+      "visualType": "card",
+      "pageId": "f510a31b-439f-4157-89a8-e722448bd521",
+      "layout": {
+        "x": 7,
+        "y": 3,
+        "width": 4,
+        "height": 3
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "d883b2df-d29e-4cda-bcf6-77276acc69fb"
+      },
+      "visualOptions": {
+        "multiStat__textSize": "auto",
+        "multiStat__valueColumn": null,
+        "colorRulesDisabled": false,
+        "colorRules": []
+      }
+    },
+    {
+      "id": "1ef118ca-2f32-497d-af7c-302d8506fdcc",
+      "title": "Variabilidad Precio",
+      "visualType": "line",
+      "pageId": "f510a31b-439f-4157-89a8-e722448bd521",
+      "layout": {
+        "x": 0,
+        "y": 6,
+        "width": 19,
+        "height": 7
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "479c48ac-00f7-41cb-ad71-84db0086be3f"
+      },
+      "visualOptions": {
+        "multipleYAxes": {
+          "base": {
+            "id": "-1",
+            "label": "",
+            "columns": [],
+            "yAxisMaximumValue": null,
+            "yAxisMinimumValue": null,
+            "yAxisScale": "linear",
+            "horizontalLines": []
+          },
+          "additional": [],
+          "showMultiplePanels": false
+        },
+        "hideLegend": false,
+        "legendLocation": "bottom",
+        "xColumnTitle": "",
+        "xColumn": "serverTime",
+        "yColumns": [
+          "price"
+        ],
+        "seriesColumns": null,
+        "xAxisScale": "linear",
+        "verticalLine": "",
+        "crossFilter": [],
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "forceAxisTicks": false,
+        "drillthrough": [],
+        "dataPointsTooltip": {
+          "all": false,
+          "limit": 1
+        }
+      }
+    }
+  ],
+  "baseQueries": [],
+  "parameters": [
+    {
+      "kind": "duration",
+      "id": "589bbfd9-5257-4055-be59-16a3358ddb14",
+      "displayName": "Intervalo de tiempo",
+      "description": "",
+      "beginVariableName": "_startTime",
+      "endVariableName": "_endTime",
+      "defaultValue": {
+        "kind": "dynamic",
+        "count": 1,
+        "unit": "hours"
+      },
+      "showOnPages": {
+        "kind": "all"
+      }
+    },
+    {
+      "kind": "string",
+      "id": "5edc3aee-6f1e-444e-8d02-a3e74d26fc5c",
+      "displayName": "Criptomoneda",
+      "description": "",
+      "variableName": "Criptomoneda",
+      "selectionType": "scalar",
+      "includeAllOption": false,
+      "defaultValue": {
+        "kind": "value",
+        "value": "BTCEUR"
+      },
+      "dataSource": {
+        "kind": "query",
+        "columns": {
+          "value": "symbol"
+        },
+        "queryRef": {
+          "kind": "query",
+          "queryId": "c0cbd165-32ca-4277-beef-23c69c50c549"
+        }
+      },
+      "showOnPages": {
+        "kind": "selection",
+        "pageIds": [
+          "f510a31b-439f-4157-89a8-e722448bd521"
+        ]
+      }
+    }
+  ],
+  "dataSources": [
+    {
+      "kind": "kusto-trident",
+      "scopeId": "kusto-trident",
+      "clusterUri": "",
+      "name": "EH_CRYPTO",
+      "database": "e9c07eaa-bd9f-b360-46f4-6fa5918c7f9c",
+      "workspace": "00000000-0000-0000-0000-000000000000",
+      "id": "1e38505d-88f3-4bac-bfff-874f3bcaac60"
+    }
+  ],
+  "pages": [
+    {
+      "name": "Principal",
+      "id": "ebcc5c71-59b4-44dd-b7c1-147d486c6bbf"
+    },
+    {
+      "name": "Detalles",
+      "id": "f510a31b-439f-4157-89a8-e722448bd521"
+    }
+  ],
+  "queries": [
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "1e38505d-88f3-4bac-bfff-874f3bcaac60"
+      },
+      "text": "// Escriba su consulta KQL (ejemplo):\n// <table name>\n// | where <columna de fecha y hora> between (['_startTime'] .. ['_endTime']) // Filtrado de intervalo de tiempo\n// | take 100\nvwCrypto\n   | top 1 by serverTime\n   | project serverTime",
+      "id": "db6d56b2-7fc4-4404-923a-81873f915455",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "1e38505d-88f3-4bac-bfff-874f3bcaac60"
+      },
+      "text": "// Escriba su consulta KQL (ejemplo):\n// <table name>\n// | where <columna de fecha y hora> between (['_startTime'] .. ['_endTime']) // Filtrado de intervalo de tiempo\n// | take 100\n   materialized_view('mvCryptoGoldLatest')\n   | summarize Cryptocurrencies = count_distinct(symbol)",
+      "id": "72d2ade0-274b-472f-960c-cf1ce92baf0e",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "1e38505d-88f3-4bac-bfff-874f3bcaac60"
+      },
+      "text": "// Escriba su consulta KQL (ejemplo):\n// <table name>\n// | where <columna de fecha y hora> between (['_startTime'] .. ['_endTime']) // Filtrado de intervalo de tiempo\n// | take 100\n    materialized_view('mvCryptoGoldLatest')\n    | where symbol endswith \"EUR\"\n    | top 5 by price",
+      "id": "868783ee-b1c9-44cf-b96e-caa04f8a8306",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "1e38505d-88f3-4bac-bfff-874f3bcaac60"
+      },
+      "text": "// Escriba su consulta KQL (ejemplo):\n// <table name>\n// | where <columna de fecha y hora> between (['_startTime'] .. ['_endTime']) // Filtrado de intervalo de tiempo\n// | take 100\nmaterialized_view('mvCryptoGoldLatest')\n    | extend priceRange = case(\n        price < 1, \"< 1€\",\n        price < 100, \"1€ - 100€\",\n        price < 1000, \"100€ - 1000€\",\n        \"> 1000€\"\n    )\n    | summarize count() by priceRange",
+      "id": "b9da838a-d6b3-4c13-ae4b-46bcd45e49b9",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "1e38505d-88f3-4bac-bfff-874f3bcaac60"
+      },
+      "text": " materialized_view('mvCryptoGoldLatest')\n   | where symbol == Criptomoneda\n   | project symbol",
+      "id": "73cd2ba0-d224-400f-a2da-3615b1eb0bcd",
+      "usedVariables": [
+        "Criptomoneda"
+      ]
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "1e38505d-88f3-4bac-bfff-874f3bcaac60"
+      },
+      "text": " vwCrypto\n   | where symbol == Criptomoneda\n   | where serverTime between (_startTime .. _endTime)\n   | summarize max(price)",
+      "id": "8d95a3d3-c63e-4915-bf10-586dfea2ff2b",
+      "usedVariables": [
+        "Criptomoneda",
+        "_endTime",
+        "_startTime"
+      ]
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "1e38505d-88f3-4bac-bfff-874f3bcaac60"
+      },
+      "text": "mvCryptoGoldLatest\n   | where symbol == Criptomoneda\n   | top 1 by serverTime desc\n   | project current_price = price",
+      "id": "4b33c1ca-7974-4eda-8643-0de78c8ae70c",
+      "usedVariables": [
+        "Criptomoneda"
+      ]
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "1e38505d-88f3-4bac-bfff-874f3bcaac60"
+      },
+      "text": "vwCrypto\n   | where symbol == Criptomoneda\n   | where serverTime between (_startTime.._endTime)\n   | summarize \n      max_price = max(price),\n      min_price = min(price)\n   | extend variation_pct = ((max_price - min_price) / min_price) * 100\n   | project variation_pct",
+      "id": "25a8014f-f785-4dfd-9dfc-6b221718e6e2",
+      "usedVariables": [
+        "Criptomoneda",
+        "_endTime",
+        "_startTime"
+      ]
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "1e38505d-88f3-4bac-bfff-874f3bcaac60"
+      },
+      "text": " let current_price = \n      mvCryptoGoldLatest\n      | where symbol == Criptomoneda;\n   let last_historical = \n      vwCrypto\n      | where symbol == Criptomoneda\n      | where serverTime between (_startTime .. _endTime)\n      | top 1 by serverTime asc\n      | project lh_symbol = symbol, lh_serverTime = serverTime, lh_price = price;\n   current_price\n   | join kind=inner last_historical on $left.symbol == $right.lh_symbol\n   | extend variation_pct = ((price - lh_price) / price) * 100\n   | project variation_pct",
+      "id": "ccc73c54-0791-4a64-bd5e-fb69cf67009a",
+      "usedVariables": [
+        "Criptomoneda",
+        "_endTime",
+        "_startTime"
+      ]
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "1e38505d-88f3-4bac-bfff-874f3bcaac60"
+      },
+      "text": "// Escriba su consulta KQL (ejemplo):\n// <table name>\n// | where <columna de fecha y hora> between (['_startTime'] .. ['_endTime']) // Filtrado de intervalo de tiempo\n// | where isempty(['Criptomoneda']) or <nombre de columna> == ['Criptomoneda'] // Filtrado de selección única\n// | take 100\n vwCrypto\n   | where symbol == Criptomoneda\n   | where serverTime between (_startTime .. _endTime)\n   | summarize min(price)",
+      "id": "d883b2df-d29e-4cda-bcf6-77276acc69fb",
+      "usedVariables": [
+        "Criptomoneda",
+        "_endTime",
+        "_startTime"
+      ]
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "1e38505d-88f3-4bac-bfff-874f3bcaac60"
+      },
+      "text": "// Escriba su consulta KQL (ejemplo):\n// <table name>\n// | where <columna de fecha y hora> between (['_startTime'] .. ['_endTime']) // Filtrado de intervalo de tiempo\n// | where isempty(['Criptomoneda']) or <nombre de columna> == ['Criptomoneda'] // Filtrado de selección única\n// | take 100\nvwCrypto\n   | where symbol == Criptomoneda\n   | where serverTime between (_startTime.._endTime)\n   | project price, serverTime",
+      "id": "479c48ac-00f7-41cb-ad71-84db0086be3f",
+      "usedVariables": [
+        "Criptomoneda",
+        "_endTime",
+        "_startTime"
+      ]
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "1e38505d-88f3-4bac-bfff-874f3bcaac60"
+      },
+      "text": "materialized_view('mvCryptoGoldLatest')\n| distinct symbol",
+      "id": "c0cbd165-32ca-4277-beef-23c69c50c549",
+      "usedVariables": []
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "sources": [
+    {
+      "id": "a95803c1-d9fe-4fb2-bf37-93d6e7a65b9d",
+      "name": "BinanceInput",
+      "type": "CustomEndpoint",
+      "properties": {}
+    }
+  ],
+  "destinations": [
+    {
+      "id": "4df9e0dc-1b74-41e9-ab86-e3cd63d23fb4",
+      "name": "Eventhouse",
+      "type": "Eventhouse",
+      "properties": {
+        "dataIngestionMode": "DirectIngestion",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "e9c07eaa-bd9f-b360-46f4-6fa5918c7f9c",
+        "tableName": "Crypto_RAW",
+        "connectionName": "ES_CRYPTO_EH_CRYPTO-Cr",
+        "mappingRuleName": "Crypto_RAW_mapping"
+      },
+      "inputNodes": [
+        {
+          "name": "ESCRYPTO-stream"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "ESCRYPTO-stream",
+          "schema": {
+            "columns": [
+              {
+                "name": "serverTime",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "tickerInfo",
+                "type": "Record",
+                "fields": [
+                  {
+                    "name": "symbol",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "price",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  }
+                ],
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "bee6c431-16f3-4067-bed2-9541a764d6ae",
+      "name": "activator",
+      "type": "Activator",
+      "properties": {
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "b0d0a5ff-b20b-b43d-46c8-3b8b77d9c45a",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "ESCRYPTO-stream"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "ESCRYPTO-stream",
+          "schema": {
+            "columns": [
+              {
+                "name": "serverTime",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "tickerInfo",
+                "type": "Record",
+                "fields": [
+                  {
+                    "name": "symbol",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "price",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  }
+                ],
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "streams": [
+    {
+      "id": "d5015475-48d0-4287-b77e-062d206b45d8",
+      "name": "ESCRYPTO-stream",
+      "type": "DefaultStream",
+      "properties": {},
+      "inputNodes": [
+        {
+          "name": "BinanceInput"
+        }
+      ]
+    }
+  ],
+  "operators": [],
+  "compatibilityLevel": "1.1"
+}

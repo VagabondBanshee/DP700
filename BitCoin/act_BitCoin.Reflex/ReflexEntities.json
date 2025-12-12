@@ -1,0 +1,122 @@
+[
+  {
+    "uniqueIdentifier": "bee6c431-16f3-4067-bed2-9541a764d6ae",
+    "payload": {
+      "name": "EventStream",
+      "metadata": {
+        "eventstreamArtifactId": "9ce5ca7d-56ae-4b4c-a835-fa6ad466a2cf"
+      }
+    },
+    "type": "eventstreamSource-v1"
+  },
+  {
+    "uniqueIdentifier": "23b11e08-b6bc-45f2-a700-23f8fd7f421a",
+    "payload": {
+      "name": "ES_CRYPTO-stream",
+      "definition": {
+        "type": "Event",
+        "instance": "{\"templateId\":\"SourceEvent\",\"templateVersion\":\"1.1\",\"steps\":[{\"name\":\"SourceEventStep\",\"id\":\"6c81ecd5-0791-4714-a448-84bb3d0d75af\",\"rows\":[{\"name\":\"SourceSelector\",\"kind\":\"SourceReference\",\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"bee6c431-16f3-4067-bed2-9541a764d6ae\"}]}]}]}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "fa4b4380-5b12-4fac-bb32-d0f7c8819604",
+    "payload": {
+      "name": "Compra BTCEUR",
+      "definition": {
+        "type": "Rule",
+        "instance": "{\"steps\":[{\"id\":\"95b06eb2-fe60-4a34-b1f4-4fe9da3852cc\",\"name\":\"FieldsDefaultsStep\",\"rows\":[{\"arguments\":[{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"23b11e08-b6bc-45f2-a700-23f8fd7f421a\"}],\"kind\":\"EventReference\",\"name\":\"event\",\"type\":\"complex\"}],\"kind\":\"Event\",\"name\":\"EventSelector\"}]},{\"id\":\"2d7e8ccb-8783-4b31-a0ca-129967041082\",\"name\":\"EventDetectStep\",\"rows\":[{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"tickerInfo.symbol\"}],\"kind\":\"EventField\",\"name\":\"EventFieldSelector\"},{\"arguments\":[{\"name\":\"op\",\"type\":\"string\",\"value\":\"IsEqualTo\"},{\"name\":\"value\",\"type\":\"string\",\"value\":\"BCTEUR\"}],\"kind\":\"TextValueCondition\",\"name\":\"TextValueCondition\"}]},{\"id\":\"7bdffbc4-9975-4796-8cb7-ef8312458fe8\",\"name\":\"EventDetectStep\",\"rows\":[{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"tickerInfo.price\"}],\"kind\":\"EventField\",\"name\":\"EventFieldSelector\"},{\"arguments\":[{\"name\":\"op\",\"type\":\"string\",\"value\":\"IsLessThanOrEqualTo\"},{\"name\":\"threshold\",\"type\":\"number\",\"value\":70000}],\"kind\":\"NumberValueCondition\",\"name\":\"NumberValueCondition\"}]},{\"id\":\"7865a242-80db-4dc7-b1d6-a4499ba5bef2\",\"name\":\"ActStep\",\"rows\":[{\"arguments\":[{\"name\":\"messageLocale\",\"type\":\"string\",\"value\":\"en-us\"},{\"name\":\"sentTo\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"quique@banshee86.es\"}]},{\"name\":\"copyTo\",\"type\":\"array\",\"values\":[]},{\"name\":\"bCCTo\",\"type\":\"array\",\"values\":[]},{\"name\":\"subject\",\"type\":\"array\",\"values\":[{\"name\":\"string\",\"type\":\"string\",\"value\":\"Alerta de Activator Alerta ES_CRYPTO-stream\"}]},{\"name\":\"headline\",\"type\":\"array\",\"values\":[{\"name\":\"string\",\"type\":\"string\",\"value\":\"​\"},{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"tickerInfo.symbol\"}],\"kind\":\"EventFieldReference\",\"type\":\"complex\"},{\"name\":\"string\",\"type\":\"string\",\"value\":\" esta a menos de 70.000\"}]},{\"name\":\"optionalMessage\",\"type\":\"array\",\"values\":[{\"name\":\"string\",\"type\":\"string\",\"value\":\"El valor actual de la cryptomoneda \"},{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"tickerInfo.symbol\"}],\"kind\":\"EventFieldReference\",\"type\":\"complex\"},{\"name\":\"string\",\"type\":\"string\",\"value\":\" es de \"},{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"tickerInfo.price\"}],\"kind\":\"EventFieldReference\",\"type\":\"complex\"},{\"name\":\"string\",\"type\":\"string\",\"value\":\" \"}]},{\"name\":\"additionalInformation\",\"type\":\"array\",\"values\":[{\"arguments\":[{\"name\":\"name\",\"type\":\"string\",\"value\":\"tickerInfo.symbol\"},{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"tickerInfo.symbol\"}],\"kind\":\"EventFieldReference\",\"name\":\"reference\",\"type\":\"complexReference\"}],\"kind\":\"NameReferencePair\",\"type\":\"complex\"},{\"arguments\":[{\"name\":\"name\",\"type\":\"string\",\"value\":\"tickerInfo.price\"},{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"tickerInfo.price\"}],\"kind\":\"EventFieldReference\",\"name\":\"reference\",\"type\":\"complexReference\"}],\"kind\":\"NameReferencePair\",\"type\":\"complex\"}]}],\"kind\":\"EmailMessage\",\"name\":\"EmailBinding\"}]}],\"templateId\":\"EventTrigger\",\"templateVersion\":\"1.2.3\"}",
+        "settings": {
+          "shouldRun": true,
+          "shouldApplyRuleOnUpdate": true,
+          "delayToleranceMs": 120000
+        }
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "79d018ff-bb56-4ff8-9dbb-2f76f1f4eee5",
+    "payload": {
+      "name": "Vender BCTEur",
+      "definition": {
+        "type": "Rule",
+        "instance": "{\"steps\":[{\"id\":\"27605e52-029d-423c-8be7-31e70b94cc08\",\"name\":\"FieldsDefaultsStep\",\"rows\":[{\"arguments\":[{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"23b11e08-b6bc-45f2-a700-23f8fd7f421a\"}],\"kind\":\"EventReference\",\"name\":\"event\",\"type\":\"complex\"}],\"kind\":\"Event\",\"name\":\"EventSelector\"}]},{\"id\":\"0b74b847-6e28-4a22-954b-84d0cb7e964d\",\"name\":\"EventDetectStep\",\"rows\":[{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"\"}],\"kind\":\"EventField\",\"name\":\"EventFieldSelector\"},{\"arguments\":[{\"name\":\"op\",\"type\":\"string\",\"value\":\"IsEqualTo\"},{\"name\":\"value\",\"type\":\"string\",\"value\":\"BCTEUR\"}],\"kind\":\"TextValueCondition\",\"name\":\"TextValueCondition\"}]},{\"id\":\"1443278a-a1e6-4484-9c8d-b3371aa45f6b\",\"name\":\"EventDetectStep\",\"rows\":[{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"\"}],\"kind\":\"EventField\",\"name\":\"EventFieldSelector\"},{\"arguments\":[{\"name\":\"op\",\"type\":\"string\",\"value\":\"IsGreaterThanOrEqualTo\"},{\"name\":\"threshold\",\"type\":\"number\",\"value\":100000}],\"kind\":\"NumberValueCondition\",\"name\":\"NumberValueCondition\"}]},{\"id\":\"4e842d45-9d96-4ff7-a8e2-c7871a4a872e\",\"name\":\"ActStep\",\"rows\":[{\"arguments\":[{\"name\":\"messageLocale\",\"type\":\"string\",\"value\":\"en-us\"},{\"name\":\"sentTo\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"quique@banshee86.es\"}]},{\"name\":\"copyTo\",\"type\":\"array\",\"values\":[]},{\"name\":\"bCCTo\",\"type\":\"array\",\"values\":[]},{\"name\":\"subject\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"Alerta de Activator Alerta ES_CRYPTO-stream\"}]},{\"name\":\"headline\",\"type\":\"array\",\"values\":[{\"name\":\"string\",\"type\":\"string\",\"value\":\"​\"},{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"tickerInfo.symbol\"}],\"kind\":\"EventFieldReference\",\"type\":\"complex\"},{\"name\":\"string\",\"type\":\"string\",\"value\":\" esta a 100.000 o más\"}]},{\"name\":\"optionalMessage\",\"type\":\"array\",\"values\":[{\"name\":\"string\",\"type\":\"string\",\"value\":\"El valor actual de la criptomenda \"},{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"tickerInfo.symbol\"}],\"kind\":\"EventFieldReference\",\"type\":\"complex\"},{\"name\":\"string\",\"type\":\"string\",\"value\":\" es de \"},{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"tickerInfo.price\"}],\"kind\":\"EventFieldReference\",\"type\":\"complex\"},{\"name\":\"string\",\"type\":\"string\",\"value\":\" \"}]},{\"name\":\"additionalInformation\",\"type\":\"array\",\"values\":[{\"arguments\":[{\"name\":\"name\",\"type\":\"string\",\"value\":\"tickerInfo.symbol\"},{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"tickerInfo.symbol\"}],\"kind\":\"EventFieldReference\",\"name\":\"reference\",\"type\":\"complexReference\"}],\"kind\":\"NameReferencePair\",\"type\":\"complex\"},{\"arguments\":[{\"name\":\"name\",\"type\":\"string\",\"value\":\"tickerInfo.price\"},{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"tickerInfo.price\"}],\"kind\":\"EventFieldReference\",\"name\":\"reference\",\"type\":\"complexReference\"}],\"kind\":\"NameReferencePair\",\"type\":\"complex\"}]}],\"kind\":\"EmailMessage\",\"name\":\"EmailBinding\"}]}],\"templateId\":\"EventTrigger\",\"templateVersion\":\"1.2.3\"}",
+        "settings": {
+          "shouldRun": false,
+          "shouldApplyRuleOnUpdate": false
+        }
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "e3daea6e-4fe3-4b62-bf41-b810b0da83b6",
+    "payload": {
+      "name": "RDB_Bitcoin",
+      "type": "kqlQueries"
+    },
+    "type": "container-v1"
+  },
+  {
+    "uniqueIdentifier": "fe71f778-91c5-4763-8e9d-02ce03df436f",
+    "payload": {
+      "name": "EH_CRYPTO event",
+      "runSettings": {
+        "executionIntervalInSeconds": 3600
+      },
+      "query": {
+        "queryString": "// Escriba su consulta KQL (ejemplo):\n// <table name>\n// | where <columna de fecha y hora> between (['_startTime'] .. ['_endTime']) // Filtrado de intervalo de tiempo\n// | take 100\n   materialized_view('mvCryptoGoldLatest')\n   | summarize Cryptocurrencies = count_distinct(symbol)"
+      },
+      "eventhouseItem": {
+        "itemId": "e9c07eaa-bd9f-b360-46f4-6fa5918c7f9c",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemType": "KustoDatabase"
+      },
+      "queryParameters": [],
+      "metadata": {
+        "workspaceId": "cf04fd00-cb10-44f0-886a-7203da7c78a8",
+        "measureName": "Cryptocurrencies",
+        "dashboardId": "a815bbab-06aa-4380-8284-4026c916f3c8",
+        "visualId": "81999246-088e-47d6-8313-25326cf2da17"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "e3daea6e-4fe3-4b62-bf41-b810b0da83b6"
+      }
+    },
+    "type": "kqlSource-v1"
+  },
+  {
+    "uniqueIdentifier": "fbc83937-0280-4b7e-b9af-25bbf5a05b98",
+    "payload": {
+      "name": "EH_CRYPTO event",
+      "parentContainer": {
+        "targetUniqueIdentifier": "e3daea6e-4fe3-4b62-bf41-b810b0da83b6"
+      },
+      "definition": {
+        "type": "Event",
+        "instance": "{\"templateId\":\"SourceEvent\",\"templateVersion\":\"1.1\",\"steps\":[{\"name\":\"SourceEventStep\",\"id\":\"a70dccde-0436-4bf8-ad3a-f5e1edcd86b5\",\"rows\":[{\"name\":\"SourceSelector\",\"kind\":\"SourceReference\",\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"fe71f778-91c5-4763-8e9d-02ce03df436f\"}]}]}]}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "0b7c9fbc-cea4-4abb-a339-d81aaaf52a7b",
+    "payload": {
+      "name": "EH_CRYPTO alert",
+      "parentContainer": {
+        "targetUniqueIdentifier": "e3daea6e-4fe3-4b62-bf41-b810b0da83b6"
+      },
+      "definition": {
+        "type": "Rule",
+        "instance": "{\"templateId\":\"EventTrigger\",\"templateVersion\":\"1.1\",\"steps\":[{\"name\":\"FieldsDefaultsStep\",\"id\":\"9b55010d-b6f1-4d52-8af8-7afd01b7b039\",\"rows\":[{\"name\":\"EventSelector\",\"kind\":\"Event\",\"arguments\":[{\"kind\":\"EventReference\",\"type\":\"complex\",\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"fbc83937-0280-4b7e-b9af-25bbf5a05b98\"}],\"name\":\"event\"}]}]},{\"name\":\"EventDetectStep\",\"id\":\"85c4edc4-31c6-4e76-bb3e-266b1325a088\",\"rows\":[{\"name\":\"EventFieldSelector\",\"kind\":\"EventField\",\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"Cryptocurrencies\"}]},{\"name\":\"NumberValueCondition\",\"kind\":\"NumberValueCondition\",\"arguments\":[{\"name\":\"op\",\"type\":\"string\",\"value\":\"IsNotEqualTo\"},{\"name\":\"threshold\",\"type\":\"number\",\"value\":2794.0}]}]},{\"name\":\"ActStep\",\"id\":\"6eb768a8-3b49-4f50-b825-4952cbbd8c41\",\"rows\":[{\"name\":\"EmailBinding\",\"kind\":\"EmailMessage\",\"arguments\":[{\"name\":\"messageLocale\",\"type\":\"string\",\"value\":\"\"},{\"name\":\"sentTo\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"quique@banshee86.es\"}]},{\"name\":\"copyTo\",\"type\":\"array\",\"values\":[]},{\"name\":\"bCCTo\",\"type\":\"array\",\"values\":[]},{\"name\":\"subject\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"Activator Trigger: New event from EH_CRYPTO\"}]},{\"name\":\"headline\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"New event from EH_CRYPTO\"}]},{\"name\":\"optionalMessage\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"\"}]},{\"name\":\"additionalInformation\",\"type\":\"array\",\"values\":[]}]}]}]}",
+        "settings": {
+          "shouldRun": true,
+          "shouldApplyRuleOnUpdate": false
+        }
+      }
+    },
+    "type": "timeSeriesView-v1"
+  }
+]

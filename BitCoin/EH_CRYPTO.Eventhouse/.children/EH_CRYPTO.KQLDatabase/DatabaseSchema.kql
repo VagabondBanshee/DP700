@@ -1,0 +1,24 @@
+// KQL script
+// Use management commands in this script to configure your database items, such as tables, functions, materialized views, and more.
+
+
+.create-merge table Crypto_RAW (serverTime:long, tickerInfo:dynamic) 
+.create-or-alter table Crypto_RAW ingestion json mapping 'Crypto_RAW_mapping'
+```
+[{"Properties":{"Path":"$['serverTime']"},"column":"serverTime","datatype":""},{"Properties":{"Path":"$['tickerInfo']"},"column":"tickerInfo","datatype":""}]
+```
+.create-merge table Crypto_Silver (serverTime:datetime, symbol:string, price:real) with (folder = "Silver") 
+.create-or-alter function with (skipvalidation = "true") LoadCryptoToSilver() {
+    Crypto_RAW
+    | extend serverTime = unixtime_milliseconds_todatetime(serverTime), j = parse_json(tickerInfo)
+    | extend symbol = tostring(j.symbol), price = toreal(j.price)
+    | project serverTime, symbol, price
+}
+.create-or-alter function with (skipvalidation = "true", view = true) vwCrypto() {
+    Crypto_Silver
+    | where price > 0
+}
+.create-or-alter materialized-view  mvCryptoGoldLatest on table Crypto_Silver { Crypto_Silver
+    | where price > 0
+    | summarize arg_max(serverTime, *) by symbol }
+.alter table Crypto_Silver policy update "[{\"IsEnabled\":true,\"Source\":\"Crypto_RAW\",\"Query\":\"LoadCryptoToSilver\",\"IsTransactional\":true,\"PropagateIngestionProperties\":false,\"ManagedIdentity\":null}]"

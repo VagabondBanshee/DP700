@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "KQLDashboard",
+    "displayName": "RDB_Bitcoin",
+    "description": "RDB_Bitcoin"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "c916f3c8-4026-8284-4380-06aaa815bbab"
+  }
+}

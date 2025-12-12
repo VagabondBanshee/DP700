@@ -1,0 +1,22 @@
+{
+  "queryset": {
+    "version": "1.0.0",
+    "dataSources": [
+      {
+        "id": "5e50f06e-32df-4e2c-9337-152ebeb982f3",
+        "clusterUri": "https://trd-q76z2d03rue6fjy0uf.z2.kusto.fabric.microsoft.com",
+        "type": "Fabric",
+        "databaseItemId": "918c7f9c-6fa5-46f4-b360-bd9fe9c07eaa",
+        "databaseItemName": "EH_CRYPTO"
+      }
+    ],
+    "tabs": [
+      {
+        "id": "67515dee-1e9d-4e59-a7ae-4e5b12c42e1b",
+        "content": ".create table Crypto_Silver (\n    serverTime: datetime,\n    symbol: string,\n    price: real\n) \nwith (folder = \"Silver\")\n\n.create-or-alter function LoadCryptoToSilver {\n    Crypto_RAW\n    | extend serverTime = unixtime_milliseconds_todatetime(serverTime), j = parse_json(tickerInfo)\n    | extend symbol = tostring(j.symbol), price = toreal(j.price)\n    | project serverTime, symbol, price\n}\n\n.alter table Crypto_Silver policy update \n```[\n    {\n        \"IsEnabled\": true,\n        \"Source\": \"Crypto_RAW\",\n        \"Query\": \"LoadCryptoToSilver\",\n        \"IsTransactional\": true,\n        \"PropagateIngestionProperties\": false\n    }\n]```\n\n.create-or-alter materialized-view with (backfill = true) mvCryptoGoldLatest on table Crypto_Silver\n{\n    Crypto_Silver\n    | where price > 0\n    | summarize arg_max(serverTime, *) by symbol\n}\n\n.create-or-alter function with(view=true) vwCrypto()\n{\n    Crypto_Silver\n    | where price > 0\n}\n\nmvCryptoGoldLatest\n\nmaterialized_view('mvCryptoGoldLatest')\n\nvwCrypto()\n| where symbol == \"BTCEUR\"\n| summarize avgPrice = avg(price) by bin(serverTime, 1h)",
+        "title": "Tab",
+        "dataSourceId": "5e50f06e-32df-4e2c-9337-152ebeb982f3"
+      }
+    ]
+  }
+}
