@@ -1,0 +1,28 @@
+{
+  "queryset": {
+    "version": "1.0.0",
+    "dataSources": [
+      {
+        "id": "3c39099a-27ca-4013-8a96-6c1d0b42738a",
+        "clusterUri": "https://trd-kku8mwfmw6d8tat34m.z9.kusto.fabric.microsoft.com",
+        "type": "Fabric",
+        "databaseItemId": "943adb50-96c1-48c9-b213-9648ac8ec15a",
+        "databaseItemName": "EH_DP700_Alex"
+      }
+    ],
+    "tabs": [
+      {
+        "id": "3590d7ab-53d7-4990-b9d6-8a4905720b4a",
+        "content": "//***********************************************************************************************************\n// Here are two articles to help you get started with KQL:\n// KQL reference guide - https://aka.ms/KQLguide\n// SQL - KQL conversions - https://aka.ms/sqlcheatsheet\n//***********************************************************************************************************\n\n// Use \"take\" to view a sample number of records in the table and check the data.\nYOUR_TABLE_HERE\n| take 100\n\n// See how many records are in the table.\nYOUR_TABLE_HERE\n| count\n\n// This query returns the number of ingestions per hour in the given table.\nYOUR_TABLE_HERE\n| summarize IngestionCount = count() by bin(ingestion_time(), 1h)\n\n",
+        "title": "Tab",
+        "dataSourceId": "3c39099a-27ca-4013-8a96-6c1d0b42738a"
+      },
+      {
+        "id": "43c34df7-7049-423c-b4a5-16b64364f4e7",
+        "content": "// Use 'take' to view a sample number of records in the table and check the data.\nAssignments\n\nDepartments\n\nEmployees\n| where salary > 75000\n| project name, salary, salary_string = strcat(\"$ \", salary)\n\nEmployees\n| join kind=leftouter Departments on department_id\n| project name, department_id, department_name\n\nEmployees\n| join kind=leftouter Departments on department_id\n| summarize number_of_employees = count() by department_name\n\nProjects\n",
+        "title": "",
+        "dataSourceId": "3c39099a-27ca-4013-8a96-6c1d0b42738a"
+      }
+    ]
+  }
+}
