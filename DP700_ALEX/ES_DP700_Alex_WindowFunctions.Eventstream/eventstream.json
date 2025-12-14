@@ -1,0 +1,600 @@
+{
+  "sources": [
+    {
+      "id": "85089584-b66c-4276-804e-5bd1ac0e6524",
+      "name": "ceMessages",
+      "type": "CustomEndpoint",
+      "properties": {}
+    }
+  ],
+  "destinations": [
+    {
+      "id": "0fbccbb0-deaa-4ee1-b720-ae2f29fbe824",
+      "name": "Eventhouse3",
+      "type": "Eventhouse",
+      "properties": {
+        "dataIngestionMode": "ProcessedIngestion",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "ac8ec15a-9648-b213-48c9-96c1943adb50",
+        "databaseName": "EH_DP700_Alex",
+        "tableName": "e006_Session_Window",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "GroupBySessionSesion"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "GroupBySessionSesion",
+          "schema": {
+            "columns": [
+              {
+                "name": "COUNT_All",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "Window_End_Time",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "501881ec-61fb-45f2-8619-a33a481f30d7",
+      "name": "Eventhouse2",
+      "type": "Eventhouse",
+      "properties": {
+        "dataIngestionMode": "ProcessedIngestion",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "ac8ec15a-9648-b213-48c9-96c1943adb50",
+        "databaseName": "EH_DP700_Alex",
+        "tableName": "e006_Sliding_Window",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "GroupBySlidingDeslizante"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "GroupBySlidingDeslizante",
+          "schema": {
+            "columns": [
+              {
+                "name": "COUNT_All",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "Window_End_Time",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "5b7ad0f8-b090-4b98-90b8-9caec09fef71",
+      "name": "Eventhouse5",
+      "type": "Eventhouse",
+      "properties": {
+        "dataIngestionMode": "ProcessedIngestion",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "ac8ec15a-9648-b213-48c9-96c1943adb50",
+        "databaseName": "EH_DP700_Alex",
+        "tableName": "e006_Raw_Messages",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "ESDP700AlexWindowFunctions-stream"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "ESDP700AlexWindowFunctions-stream",
+          "schema": {
+            "columns": [
+              {
+                "name": "timestamp",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "message",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "message_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "74d24666-df0a-42e9-a97d-2dc18627de12",
+      "name": "Eventhouse",
+      "type": "Eventhouse",
+      "properties": {
+        "dataIngestionMode": "ProcessedIngestion",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "ac8ec15a-9648-b213-48c9-96c1943adb50",
+        "databaseName": "EH_DP700_Alex",
+        "tableName": "e006_Tumbling_Window",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "GroupBySaltoTumblingSaltosConstantes"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "GroupBySaltoTumblingSaltosConstantes",
+          "schema": {
+            "columns": [
+              {
+                "name": "COUNT_All",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "Window_End_Time",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "d84ac7d0-a5da-4c08-97a2-5ecc7a18d5e8",
+      "name": "Eventhouse1",
+      "type": "Eventhouse",
+      "properties": {
+        "dataIngestionMode": "ProcessedIngestion",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "ac8ec15a-9648-b213-48c9-96c1943adb50",
+        "databaseName": "EH_DP700_Alex",
+        "tableName": "e006_Hoping_Window",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "GroupByHoppingSalto"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "GroupByHoppingSalto",
+          "schema": {
+            "columns": [
+              {
+                "name": "COUNT_All",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "Window_End_Time",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "fbe606b0-b2af-40e3-a545-753a706599d7",
+      "name": "Eventhouse4",
+      "type": "Eventhouse",
+      "properties": {
+        "dataIngestionMode": "ProcessedIngestion",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "ac8ec15a-9648-b213-48c9-96c1943adb50",
+        "databaseName": "EH_DP700_Alex",
+        "tableName": "e006_Snapshot_Window",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "GroupBySnapShotInstantanea"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "GroupBySnapShotInstantanea",
+          "schema": {
+            "columns": [
+              {
+                "name": "COUNT_All",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "Window_End_Time",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "streams": [
+    {
+      "id": "8bd3bb21-06d5-47bb-bdda-57b3473d1dc4",
+      "name": "ESDP700AlexWindowFunctions-stream",
+      "type": "DefaultStream",
+      "properties": {},
+      "inputNodes": [
+        {
+          "name": "ceMessages"
+        }
+      ]
+    }
+  ],
+  "operators": [
+    {
+      "name": "GroupByHoppingSalto",
+      "type": "GroupBy",
+      "inputNodes": [
+        {
+          "name": "ESDP700AlexWindowFunctions-stream"
+        }
+      ],
+      "properties": {
+        "aggregations": [
+          {
+            "aggregateFunction": "Count",
+            "arguments": [],
+            "column": {
+              "expressionType": "Wildcard"
+            },
+            "alias": "COUNT_All"
+          }
+        ],
+        "groupBy": [],
+        "window": {
+          "type": "Hopping",
+          "properties": {
+            "hopSize": {
+              "value": 5,
+              "unit": "Second"
+            },
+            "duration": {
+              "value": 10,
+              "unit": "Second"
+            },
+            "offset": {
+              "value": 0,
+              "unit": "Second"
+            }
+          }
+        }
+      },
+      "inputSchemas": [
+        {
+          "name": "ESDP700AlexWindowFunctions-stream",
+          "schema": {
+            "columns": [
+              {
+                "name": "timestamp",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "message",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "message_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "GroupBySaltoTumblingSaltosConstantes",
+      "type": "GroupBy",
+      "inputNodes": [
+        {
+          "name": "ESDP700AlexWindowFunctions-stream"
+        }
+      ],
+      "properties": {
+        "aggregations": [
+          {
+            "aggregateFunction": "Count",
+            "arguments": [],
+            "column": {
+              "expressionType": "Wildcard"
+            },
+            "alias": "COUNT_All"
+          }
+        ],
+        "groupBy": [],
+        "window": {
+          "type": "Tumbling",
+          "properties": {
+            "duration": {
+              "value": 10,
+              "unit": "Second"
+            },
+            "offset": {
+              "value": 0,
+              "unit": "Second"
+            }
+          }
+        }
+      },
+      "inputSchemas": [
+        {
+          "name": "ESDP700AlexWindowFunctions-stream",
+          "schema": {
+            "columns": [
+              {
+                "name": "timestamp",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "message",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "message_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "GroupBySessionSesion",
+      "type": "GroupBy",
+      "inputNodes": [
+        {
+          "name": "ESDP700AlexWindowFunctions-stream"
+        }
+      ],
+      "properties": {
+        "aggregations": [
+          {
+            "aggregateFunction": "Count",
+            "arguments": [],
+            "column": {
+              "expressionType": "Wildcard"
+            },
+            "alias": "COUNT_All"
+          }
+        ],
+        "groupBy": [],
+        "window": {
+          "type": "Session",
+          "properties": {
+            "maxDuration": {
+              "value": 10,
+              "unit": "Second"
+            },
+            "timeout": {
+              "value": 5,
+              "unit": "Second"
+            },
+            "partitionBy": null
+          }
+        }
+      },
+      "inputSchemas": [
+        {
+          "name": "ESDP700AlexWindowFunctions-stream",
+          "schema": {
+            "columns": [
+              {
+                "name": "timestamp",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "message",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "message_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "GroupBySlidingDeslizante",
+      "type": "GroupBy",
+      "inputNodes": [
+        {
+          "name": "ESDP700AlexWindowFunctions-stream"
+        }
+      ],
+      "properties": {
+        "aggregations": [
+          {
+            "aggregateFunction": "Count",
+            "arguments": [],
+            "column": {
+              "expressionType": "Wildcard"
+            },
+            "alias": "COUNT_All"
+          }
+        ],
+        "groupBy": [],
+        "window": {
+          "type": "Sliding",
+          "properties": {
+            "duration": {
+              "value": 5,
+              "unit": "Second"
+            }
+          }
+        }
+      },
+      "inputSchemas": [
+        {
+          "name": "ESDP700AlexWindowFunctions-stream",
+          "schema": {
+            "columns": [
+              {
+                "name": "timestamp",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "message",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "message_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "GroupBySnapShotInstantanea",
+      "type": "GroupBy",
+      "inputNodes": [
+        {
+          "name": "ESDP700AlexWindowFunctions-stream"
+        }
+      ],
+      "properties": {
+        "aggregations": [
+          {
+            "aggregateFunction": "Count",
+            "arguments": [],
+            "column": {
+              "expressionType": "Wildcard"
+            },
+            "alias": "COUNT_All"
+          }
+        ],
+        "groupBy": [],
+        "window": {
+          "type": "Snapshot",
+          "properties": {}
+        }
+      },
+      "inputSchemas": [
+        {
+          "name": "ESDP700AlexWindowFunctions-stream",
+          "schema": {
+            "columns": [
+              {
+                "name": "timestamp",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "message",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "message_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "compatibilityLevel": "1.1"
+}

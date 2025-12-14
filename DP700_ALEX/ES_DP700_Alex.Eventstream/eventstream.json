@@ -1,0 +1,752 @@
+{
+  "sources": [
+    {
+      "id": "5eb1e560-9ecc-4619-abab-9fcd965d8489",
+      "name": "ceTemperature",
+      "type": "CustomEndpoint",
+      "properties": {}
+    }
+  ],
+  "destinations": [
+    {
+      "id": "13a1e42c-ca95-4bec-9000-3a548c9a8bbd",
+      "name": "Lakehouse",
+      "type": "Lakehouse",
+      "properties": {
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "653d05c1-e8b2-857b-4fe1-06ab86c71145",
+        "schema": "dp700_e004",
+        "deltaTable": "Temperature",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "ManageFields1"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "ManageFields1",
+          "schema": {
+            "columns": [
+              {
+                "name": "sensor",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "temperature",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "country",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "city",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "timestamp",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "event_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "AVG_temperature",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "2d1283db-258a-4eb4-8dae-0b1b739c8788",
+      "name": "Eventhouse",
+      "type": "Eventhouse",
+      "properties": {
+        "dataIngestionMode": "ProcessedIngestion",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "ac8ec15a-9648-b213-48c9-96c1943adb50",
+        "databaseName": "EH_DP700_Alex",
+        "tableName": "Temperature",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "ManageFields1"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "ManageFields1",
+          "schema": {
+            "columns": [
+              {
+                "name": "sensor",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "temperature",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "country",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "city",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "timestamp",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "event_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "AVG_temperature",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "streams": [
+    {
+      "id": "1889296b-f2f1-4569-8a61-4df1b1c22ea0",
+      "name": "ESDP700Alex-stream",
+      "type": "DefaultStream",
+      "properties": {},
+      "inputNodes": [
+        {
+          "name": "ceTemperature"
+        }
+      ]
+    }
+  ],
+  "operators": [
+    {
+      "name": "Expand",
+      "type": "Expand",
+      "inputNodes": [
+        {
+          "name": "ESDP700Alex-stream"
+        }
+      ],
+      "properties": {
+        "column": {
+          "expressionType": "ColumnReference",
+          "node": null,
+          "columnName": "temperature_readings",
+          "columnPathSegments": []
+        },
+        "ignoreMissingOrEmpty": true
+      },
+      "inputSchemas": [
+        {
+          "name": "ESDP700Alex-stream",
+          "schema": {
+            "columns": [
+              {
+                "name": "country",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "city",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "timestamp",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "temperature_readings",
+                "type": "Array",
+                "fields": null,
+                "items": {
+                  "name": null,
+                  "type": "Record",
+                  "fields": [
+                    {
+                      "name": "sensor",
+                      "type": "Nvarchar(max)",
+                      "fields": null,
+                      "items": null
+                    },
+                    {
+                      "name": "temperature",
+                      "type": "Nvarchar(max)",
+                      "fields": null,
+                      "items": null
+                    }
+                  ],
+                  "items": null
+                }
+              },
+              {
+                "name": "event_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "GroupBy",
+      "type": "GroupBy",
+      "inputNodes": [
+        {
+          "name": "ManageFields"
+        }
+      ],
+      "properties": {
+        "aggregations": [
+          {
+            "aggregateFunction": "Average",
+            "arguments": [],
+            "column": {
+              "expressionType": "ColumnReference",
+              "node": null,
+              "columnName": "temperature",
+              "columnPathSegments": []
+            },
+            "alias": "AVG_temperature"
+          }
+        ],
+        "groupBy": [
+          {
+            "expressionType": "ColumnReference",
+            "node": null,
+            "columnName": "event_id",
+            "columnPathSegments": []
+          }
+        ],
+        "window": {
+          "type": "Snapshot",
+          "properties": {}
+        }
+      },
+      "inputSchemas": [
+        {
+          "name": "ManageFields",
+          "schema": {
+            "columns": [
+              {
+                "name": "sensor",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "temperature",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "country",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "city",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "timestamp",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "event_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Join",
+      "type": "Join",
+      "inputNodes": [
+        {
+          "name": "GroupBy"
+        },
+        {
+          "name": "ManageFields"
+        }
+      ],
+      "properties": {
+        "joinType": "LeftOuter",
+        "joinOn": [
+          {
+            "left": {
+              "expressionType": "ColumnReference",
+              "node": "ManageFields",
+              "columnName": "event_id",
+              "columnPathSegments": []
+            },
+            "right": {
+              "expressionType": "ColumnReference",
+              "node": "GroupBy",
+              "columnName": "event_id",
+              "columnPathSegments": []
+            }
+          }
+        ],
+        "duration": {
+          "value": 5,
+          "unit": "Second"
+        }
+      },
+      "inputSchemas": [
+        {
+          "name": "GroupBy",
+          "schema": {
+            "columns": [
+              {
+                "name": "event_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "AVG_temperature",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "Window_End_Time",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        },
+        {
+          "name": "ManageFields",
+          "schema": {
+            "columns": [
+              {
+                "name": "sensor",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "temperature",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "country",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "city",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "timestamp",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "event_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "ManageFields",
+      "type": "ManageFields",
+      "inputNodes": [
+        {
+          "name": "Expand"
+        }
+      ],
+      "properties": {
+        "columns": [
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "ArrayValue_temperature_readings",
+                "columnPathSegments": [
+                  {
+                    "field": "sensor"
+                  }
+                ]
+              }
+            },
+            "alias": "sensor"
+          },
+          {
+            "type": "Cast",
+            "properties": {
+              "targetDataType": "Float",
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "ArrayValue_temperature_readings",
+                "columnPathSegments": [
+                  {
+                    "field": "temperature"
+                  }
+                ]
+              }
+            },
+            "alias": "temperature"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "country",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "country"
+          },
+          {
+            "type": "FunctionCall",
+            "properties": {
+              "functionName": "Upper",
+              "arguments": [
+                {
+                  "expressionType": "ColumnReference",
+                  "node": null,
+                  "columnName": "city",
+                  "columnPathSegments": []
+                }
+              ]
+            },
+            "alias": "city"
+          },
+          {
+            "type": "Cast",
+            "properties": {
+              "targetDataType": "DateTime",
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "timestamp",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "timestamp"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "event_id",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "event_id"
+          }
+        ]
+      },
+      "inputSchemas": [
+        {
+          "name": "Expand",
+          "schema": {
+            "columns": [
+              {
+                "name": "ArrayIndex_temperature_readings",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "ArrayValue_temperature_readings",
+                "type": "Record",
+                "fields": [
+                  {
+                    "name": "sensor",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "temperature",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  }
+                ],
+                "items": null
+              },
+              {
+                "name": "country",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "city",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "timestamp",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "event_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "ManageFields1",
+      "type": "ManageFields",
+      "inputNodes": [
+        {
+          "name": "Join"
+        }
+      ],
+      "properties": {
+        "columns": [
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "left_sensor",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "sensor"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "left_temperature",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "temperature"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "left_country",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "country"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "left_city",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "city"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "left_timestamp",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "timestamp"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "left_event_id",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "event_id"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "right_AVG_temperature",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "AVG_temperature"
+          }
+        ]
+      },
+      "inputSchemas": [
+        {
+          "name": "Join",
+          "schema": {
+            "columns": [
+              {
+                "name": "left_sensor",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "left_temperature",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "left_country",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "left_city",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "left_timestamp",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "left_event_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "right_event_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "right_AVG_temperature",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "right_Window_End_Time",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "compatibilityLevel": "1.1"
+}
