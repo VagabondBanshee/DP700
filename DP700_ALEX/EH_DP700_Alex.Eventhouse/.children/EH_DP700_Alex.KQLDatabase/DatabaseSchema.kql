@@ -22,3 +22,23 @@
 ```
 [{"Properties":{"Ordinal":"0"},"column":"project_id","datatype":""},{"Properties":{"Ordinal":"1"},"column":"project_name","datatype":""},{"Properties":{"Ordinal":"2"},"column":"department_id","datatype":""},{"Properties":{"Ordinal":"3"},"column":"budget","datatype":""},{"Properties":{"Ordinal":"4"},"column":"start_date","datatype":""}]
 ```
+.create-merge table Temperature (sensor:string, temperature:real, country:string, city:string, timestamp:datetime, event_id:string, AVG_temperature:real) 
+.create-merge table e006_Session_Window (COUNT_All:long, Window_End_Time:datetime) 
+.create-merge table e006_Tumbling_Window (COUNT_All:long, Window_End_Time:datetime) 
+.create-merge table e006_Snapshot_Window (COUNT_All:long, Window_End_Time:datetime) 
+.create-merge table e006_Hoping_Window (COUNT_All:long, Window_End_Time:datetime) 
+.create-merge table e006_Sliding_Window (COUNT_All:long, Window_End_Time:datetime) 
+.create-merge table e006_Raw_Messages (timestamp:string, message:string, message_id:string) 
+.create-merge table e015_website_visits (visit_id:string, visit_timestamp:datetime, page:string) 
+.create-or-alter function with (skipvalidation = "true") get_daily_visits_per_page(pageName:string) {
+    e015_website_visits
+    | where page == pageName
+    | extend visit_day = bin(visit_timestamp, 1d)
+    | summarize visit_count = count() by visit_day
+}
+.create-or-alter materialized-view with (DocString = "Daily website visits without backfill")  e015_mv_daily_visits_no_backfill on table e015_website_visits { e015_website_visits
+    | extend visit_day = bin(visit_timestamp, 1d)
+    | summarize visit_count = count() by visit_day }
+.create-or-alter materialized-view with (DocString = "Daily website visits with backfill")  e015_mv_daily_visits_with_backfill on table e015_website_visits { e015_website_visits
+    | extend visit_day = bin(visit_timestamp, 1d)
+    | summarize visit_count = count() by visit_day }

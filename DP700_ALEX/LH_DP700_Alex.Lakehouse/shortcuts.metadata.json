@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "name": "Temperature",
+    "path": "/Tables/dbo",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/Temperature",
+        "itemId": "ac8ec15a-9648-b213-48c9-96c1943adb50",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "artifactType": "KustoDatabase"
+      }
+    }
+  }
+]

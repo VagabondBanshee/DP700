@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "NB_DP700_Alex_Spark_Structures_Streaming"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "204e8c31-24aa-ae91-4355-03d25b1913e6"
+  }
+}
