@@ -1,0 +1,60 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "3659a068-a474-8fe1-4570-75ec9a120827",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "param_1": {
+              "value": "Parametro de Pipeline",
+              "type": "string"
+            },
+            "param_2": {
+              "value": "99",
+              "type": "int"
+            }
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Ejemplo de Parametros",
+        "dependsOn": []
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "nb_exit_Value",
+          "value": {
+            "value": "@activity('Ejemplo de Parametros').output.result.exitvalue",
+            "type": "Expression"
+          }
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Obtener Salida del Notebook",
+        "dependsOn": [
+          {
+            "activity": "Ejemplo de Parametros",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ],
+    "variables": {
+      "nb_exit_Value": {
+        "type": "String"
+      }
+    }
+  }
+}
