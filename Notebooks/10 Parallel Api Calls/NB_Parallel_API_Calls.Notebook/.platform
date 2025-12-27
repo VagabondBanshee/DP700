@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "NB_Parallel_API_Calls"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "7cdcd872-e891-8ae3-47df-342cb13fdc28"
+  }
+}

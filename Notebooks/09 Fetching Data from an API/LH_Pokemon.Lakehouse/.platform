@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Lakehouse",
+    "displayName": "LH_Pokemon"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e209b6de-e034-9fd9-49f9-9611d804dbd9"
+  }
+}

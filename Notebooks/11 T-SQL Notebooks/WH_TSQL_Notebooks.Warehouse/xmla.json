@@ -1,0 +1,275 @@
+{
+  "name": "{{Dataset_Name}}",
+  "compatibilityLevel": 1604,
+  "model": {
+    "name": "{{Dataset_Name}}",
+    "culture": "en-US",
+    "collation": "Latin1_General_100_BIN2_UTF8",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "movies",
+        "sourceLineageTag": "[Movies].[movies]",
+        "columns": [
+          {
+            "name": "FILM",
+            "dataType": "string",
+            "sourceColumn": "FILM",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "FILM",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "YEAR",
+            "dataType": "int64",
+            "sourceColumn": "YEAR",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "YEAR",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "RATING",
+            "dataType": "double",
+            "sourceColumn": "RATING",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "RATING",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "movies",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "Movies"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "testTable",
+        "sourceLineageTag": "[Movies].[testTable]",
+        "columns": [
+          {
+            "name": "FILM",
+            "dataType": "string",
+            "sourceColumn": "FILM",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "FILM",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "YEAR",
+            "dataType": "int64",
+            "sourceColumn": "YEAR",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "YEAR",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "RATING",
+            "dataType": "double",
+            "sourceColumn": "RATING",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "RATING",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "[DATA_SOURCE]",
+            "dataType": "string",
+            "sourceColumn": "[DATA_SOURCE]",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "[DATA_SOURCE]",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "testTable",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "Movies"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "vwTestVista",
+        "sourceLineageTag": "[Movies].[vwTestVista]",
+        "columns": [
+          {
+            "name": "FILM",
+            "dataType": "string",
+            "sourceColumn": "FILM",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "FILM",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "YEAR",
+            "dataType": "int64",
+            "sourceColumn": "YEAR",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "YEAR",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "RATING",
+            "dataType": "double",
+            "sourceColumn": "RATING",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "RATING",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "[DATA_SOURCE]",
+            "dataType": "string",
+            "sourceColumn": "[DATA_SOURCE]",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "[DATA_SOURCE]",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "vwTestVista",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "Movies"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      }
+    ],
+    "expressions": [
+      {
+        "name": "DatabaseQuery",
+        "kind": "m",
+        "expression": "let\n    database = {{TDS_Endpoint}}\nin\n    database\n"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "SourceLineageTagType",
+        "value": "DatabaseFullyQualifiedName"
+      }
+    ]
+  }
+}

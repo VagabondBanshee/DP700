@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Lakehouse",
+    "displayName": "LH_ParallelAPI_Calls"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "61978e97-a31a-bd77-4087-e6f193a4d83e"
+  }
+}
