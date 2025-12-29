@@ -1,0 +1,37 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "name": "If Condition1",
+        "type": "IfCondition",
+        "dependsOn": [],
+        "typeProperties": {
+          "expression": {
+            "value": "@equals(0,dayOfWeek(utcNow()))",
+            "type": "Expression"
+          },
+          "ifFalseActivities": [
+            {
+              "name": "False",
+              "type": "Wait",
+              "dependsOn": [],
+              "typeProperties": {
+                "waitTimeInSeconds": 1
+              }
+            }
+          ],
+          "ifTrueActivities": [
+            {
+              "name": "True",
+              "type": "Wait",
+              "dependsOn": [],
+              "typeProperties": {
+                "waitTimeInSeconds": 1
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
