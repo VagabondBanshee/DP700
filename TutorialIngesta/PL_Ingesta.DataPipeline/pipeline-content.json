@@ -1,0 +1,77 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "InvokeCopyJob",
+        "typeProperties": {
+          "copyJobId": "4dd4fc2b-4740-86e7-4d18-3aa6588f55c7",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "externalReferences": {
+          "connection": "6b6b739c-1c7f-40c7-b7d0-9b7420c4e12b"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Copy job_0e7",
+        "dependsOn": []
+      },
+      {
+        "type": "Office365Email",
+        "typeProperties": {
+          "body": "@concat('Copy Job Finalizado: ',\npipeline().TriggerTime,\n', con el resultado: ',\nactivity('Copy job_0e7').output\n)",
+          "to": "etorron@animsa.es",
+          "subject": "Copy job Finalizado"
+        },
+        "externalReferences": {
+          "connection": "74cd1182-0ef7-4721-9510-0a25ed22c15e"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Office365Email1",
+        "dependsOn": [
+          {
+            "activity": "Dataflow1",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "RefreshDataflow",
+        "typeProperties": {
+          "dataflowId": "0fabba34-0072-41e8-84a1-f55afd905d56",
+          "workspaceId": "c1922b59-efba-4018-a0d4-b9ecd3bbe3fc",
+          "notifyOption": "NoNotification",
+          "dataflowType": "Dataflow-Gen2"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Dataflow1",
+        "dependsOn": [
+          {
+            "activity": "Copy job_0e7",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
