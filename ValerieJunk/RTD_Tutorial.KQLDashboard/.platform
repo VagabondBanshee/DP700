@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "KQLDashboard",
+    "displayName": "RTD_Tutorial",
+    "description": "RTD_Tutorial"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "abe70a2f-eb70-b22c-4fa0-fd6e4ed763bc"
+  }
+}

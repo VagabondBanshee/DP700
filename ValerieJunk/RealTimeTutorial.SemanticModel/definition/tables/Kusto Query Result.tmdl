@@ -1,0 +1,77 @@
+table 'Kusto Query Result'
+	lineageTag: 33712950-0211-4642-86a5-5cab8b2075be
+
+	column BikepointID
+		dataType: string
+		lineageTag: c073ddb1-67a8-414c-b0ad-a2fa9c06e8fa
+		summarizeBy: none
+		sourceColumn: BikepointID
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_time
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 91b60bbb-3594-475e-bfab-1ae4f9e22ed9
+		summarizeBy: none
+		sourceColumn: current_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column No_Bikes
+		dataType: int64
+		formatString: 0
+		lineageTag: b721594d-04c5-4773-b0fd-348665f21398
+		summarizeBy: sum
+		sourceColumn: No_Bikes
+
+		annotation SummarizationSetBy = Automatic
+
+	column Neighbourhood
+		dataType: string
+		lineageTag: e32224cc-9cef-414d-8f28-50d4310decae
+		summarizeBy: none
+		sourceColumn: Neighbourhood
+
+		annotation SummarizationSetBy = Automatic
+
+	column No_Empty_Docks
+		dataType: int64
+		formatString: 0
+		lineageTag: 93837af3-9785-4dc8-bcea-40578e1b5b2b
+		summarizeBy: sum
+		sourceColumn: No_Empty_Docks
+
+		annotation SummarizationSetBy = Automatic
+
+	column lat
+		dataType: double
+		lineageTag: a6e0f8c1-d936-4cb0-8602-13a2136d3d2c
+		summarizeBy: sum
+		sourceColumn: lat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column lon
+		dataType: double
+		lineageTag: 90e697a4-760d-4e02-bb55-b1a413004f0a
+		summarizeBy: sum
+		sourceColumn: lon
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Kusto Query Result' = m
+		mode: directQuery
+		source =
+				let
+				Source = AzureDataExplorer.Contents("https://trd-ptkcu0anfe93zq4ry3.z1.kusto.fabric.microsoft.com", "e6c7c8d5-2c7b-4174-b9d1-308f86f86df7", "Bike_Table
+				| summarize arg_max(current_time,No_Bikes, Neighbourhood, No_Empty_Docks,lat= todouble(Latitude), lon= todouble(Longitude)) by BikepointID", [])
+				in
+				Source
+
+	annotation PBI_ResultType = Table
+

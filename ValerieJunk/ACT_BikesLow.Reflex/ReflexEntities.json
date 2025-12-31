@@ -1,0 +1,61 @@
+[
+  {
+    "uniqueIdentifier": "0defc76d-a69c-424d-920f-b6f50a2b7078",
+    "payload": {
+      "name": "ES_Tutorial",
+      "description": "Container Description",
+      "type": "eventstreams"
+    },
+    "type": "container-v1"
+  },
+  {
+    "uniqueIdentifier": "a8e41c31-d181-44e5-8fa7-f472c60e9791",
+    "payload": {
+      "name": "ESTutorial-stream evento",
+      "metadata": {
+        "eventstreamArtifactId": "808252c4-916b-4d45-881a-296509bcbe7d",
+        "eventTypes": [
+          {
+            "name": "ES_Tutorial"
+          }
+        ]
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "0defc76d-a69c-424d-920f-b6f50a2b7078"
+      }
+    },
+    "type": "eventstreamSource-v1"
+  },
+  {
+    "uniqueIdentifier": "3cc64134-f274-4d36-b739-2b5865f8f4f4",
+    "payload": {
+      "name": "ESTutorial-stream evento",
+      "parentContainer": {
+        "targetUniqueIdentifier": "0defc76d-a69c-424d-920f-b6f50a2b7078"
+      },
+      "definition": {
+        "type": "Event",
+        "instance": "{\"steps\":[{\"id\":\"b0c1500d-5506-4cd9-9d2c-570d1e1fb94a\",\"name\":\"SourceEventStep\",\"rows\":[{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"a8e41c31-d181-44e5-8fa7-f472c60e9791\"}],\"kind\":\"SourceReference\",\"name\":\"SourceSelector\"}]}],\"templateId\":\"SourceEvent\",\"templateVersion\":\"1.2.3\"}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "d3cb7aa0-c111-4aae-8671-ea9a94e9e9ba",
+    "payload": {
+      "name": "BikesLow",
+      "parentContainer": {
+        "targetUniqueIdentifier": "0defc76d-a69c-424d-920f-b6f50a2b7078"
+      },
+      "definition": {
+        "type": "Rule",
+        "instance": "{\"steps\":[{\"id\":\"486abc79-10fd-4041-82da-0ee9985e2057\",\"name\":\"FieldsDefaultsStep\",\"rows\":[{\"arguments\":[{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"3cc64134-f274-4d36-b739-2b5865f8f4f4\"}],\"kind\":\"EventReference\",\"name\":\"event\",\"type\":\"complex\"}],\"kind\":\"Event\",\"name\":\"EventSelector\"}]},{\"id\":\"6d8220e2-b3e4-4579-922f-e9de04e5e72e\",\"name\":\"EventDetectStep\",\"rows\":[{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"No_Bikes\"}],\"kind\":\"EventField\",\"name\":\"EventFieldSelector\"},{\"arguments\":[{\"name\":\"op\",\"type\":\"string\",\"value\":\"IsLessThan\"},{\"name\":\"threshold\",\"type\":\"number\",\"value\":5}],\"kind\":\"NumberValueCondition\",\"name\":\"NumberValueCondition\"}]},{\"id\":\"39d5e918-9bc4-4633-b05e-de506ec9ee8b\",\"name\":\"ActStep\",\"rows\":[{\"arguments\":[{\"name\":\"messageLocale\",\"type\":\"string\",\"value\":\"en-us\"},{\"name\":\"sentTo\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"quique@banshee86.es\"}]},{\"name\":\"copyTo\",\"type\":\"array\",\"values\":[]},{\"name\":\"bCCTo\",\"type\":\"array\",\"values\":[]},{\"name\":\"subject\",\"type\":\"array\",\"values\":[{\"name\":\"string\",\"type\":\"string\",\"value\":\"No Bikes Bajo\"}]},{\"name\":\"headline\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"Se ha cumplido la condición\"}]},{\"name\":\"optionalMessage\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"\"}]},{\"name\":\"additionalInformation\",\"type\":\"array\",\"values\":[{\"arguments\":[{\"name\":\"name\",\"type\":\"string\",\"value\":\"BikepointID\"},{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"BikepointID\"}],\"kind\":\"EventFieldReference\",\"name\":\"reference\",\"type\":\"complexReference\"}],\"kind\":\"NameReferencePair\",\"type\":\"complex\"},{\"arguments\":[{\"name\":\"name\",\"type\":\"string\",\"value\":\"Street\"},{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"Street\"}],\"kind\":\"EventFieldReference\",\"name\":\"reference\",\"type\":\"complexReference\"}],\"kind\":\"NameReferencePair\",\"type\":\"complex\"},{\"arguments\":[{\"name\":\"name\",\"type\":\"string\",\"value\":\"Neighbourhood\"},{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"Neighbourhood\"}],\"kind\":\"EventFieldReference\",\"name\":\"reference\",\"type\":\"complexReference\"}],\"kind\":\"NameReferencePair\",\"type\":\"complex\"},{\"arguments\":[{\"name\":\"name\",\"type\":\"string\",\"value\":\"Latitude\"},{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"Latitude\"}],\"kind\":\"EventFieldReference\",\"name\":\"reference\",\"type\":\"complexReference\"}],\"kind\":\"NameReferencePair\",\"type\":\"complex\"},{\"arguments\":[{\"name\":\"name\",\"type\":\"string\",\"value\":\"Longitude\"},{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"Longitude\"}],\"kind\":\"EventFieldReference\",\"name\":\"reference\",\"type\":\"complexReference\"}],\"kind\":\"NameReferencePair\",\"type\":\"complex\"}]}],\"kind\":\"EmailMessage\",\"name\":\"EmailBinding\"}]}],\"templateId\":\"EventTrigger\",\"templateVersion\":\"1.2.3\"}",
+        "settings": {
+          "shouldRun": true,
+          "shouldApplyRuleOnUpdate": false
+        }
+      }
+    },
+    "type": "timeSeriesView-v1"
+  }
+]

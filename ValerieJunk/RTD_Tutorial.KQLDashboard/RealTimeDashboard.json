@@ -1,0 +1,210 @@
+{
+  "schema_version": 67,
+  "tiles": [
+    {
+      "id": "80709c19-5640-495b-9325-ae7dc681fc80",
+      "title": "New Tile",
+      "visualType": "column",
+      "pageId": "936ef56d-4ea5-4eeb-ac81-83221f6553e5",
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "width": 9,
+        "height": 7
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "f33518f3-25b3-46fa-bf55-66f078820144"
+      },
+      "visualOptions": {
+        "xColumn": "BikepointID",
+        "multipleYAxes": {
+          "additional": [],
+          "showMultiplePanels": false,
+          "base": {
+            "horizontalLines": [],
+            "yAxisScale": "linear",
+            "yAxisMaximumValue": null,
+            "yAxisMinimumValue": null,
+            "columns": [],
+            "label": "",
+            "id": "-1"
+          }
+        },
+        "yColumns": [
+          "No_Bikes"
+        ],
+        "seriesColumns": null,
+        "anomalyColumns": null,
+        "map__longitudeColumn": "BikepointID",
+        "map__latitudeColumn": "No_Bikes",
+        "selectedDataOnLoad": {
+          "all": true,
+          "limit": 10
+        }
+      }
+    },
+    {
+      "id": "921c0be5-023e-4a20-b411-4fdaab06cd5b",
+      "title": "New Tile",
+      "visualType": "timechart",
+      "pageId": "936ef56d-4ea5-4eeb-ac81-83221f6553e5",
+      "layout": {
+        "x": 9,
+        "y": 0,
+        "width": 9,
+        "height": 7
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "b44de1a1-2f53-43c4-b750-eb02328f6c83"
+      },
+      "visualOptions": {
+        "xColumn": null,
+        "multipleYAxes": {
+          "additional": [],
+          "showMultiplePanels": false,
+          "base": {
+            "horizontalLines": [],
+            "yAxisScale": "linear",
+            "yAxisMaximumValue": null,
+            "yAxisMinimumValue": null,
+            "columns": [],
+            "label": "",
+            "id": "-1"
+          }
+        },
+        "yColumns": null,
+        "seriesColumns": null,
+        "anomalyColumns": null,
+        "map__longitudeColumn": null,
+        "map__latitudeColumn": null,
+        "selectedDataOnLoad": {
+          "all": true,
+          "limit": 10
+        }
+      }
+    },
+    {
+      "id": "0cc64a15-50bc-4472-be9e-b77d73cc8c90",
+      "title": "Bikepoints in Chelsea",
+      "visualType": "table",
+      "pageId": "936ef56d-4ea5-4eeb-ac81-83221f6553e5",
+      "layout": {
+        "x": 0,
+        "y": 7,
+        "width": 18,
+        "height": 6
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "d16184db-1510-4fe0-a4de-a09083249278"
+      },
+      "visualOptions": {
+        "table__enableRenderLinks": true,
+        "colorRulesDisabled": true,
+        "crossFilter": [],
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "drillthrough": [],
+        "table__renderLinks": [],
+        "colorRules": [],
+        "selectedDataOnLoad": {
+          "all": true,
+          "limit": 10
+        }
+      }
+    },
+    {
+      "id": "dca4f9dc-30b8-4cec-a363-634e3c12cd0a",
+      "title": "New Tile",
+      "visualType": "bar",
+      "pageId": "936ef56d-4ea5-4eeb-ac81-83221f6553e5",
+      "layout": {
+        "x": 9,
+        "y": 7,
+        "width": 9,
+        "height": 7
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "b57cdb4e-7dda-41c9-a002-a04745ec30d3"
+      },
+      "visualOptions": {}
+    }
+  ],
+  "baseQueries": [],
+  "parameters": [
+    {
+      "kind": "duration",
+      "id": "8d73314d-814e-4d08-b607-a89ea0b0241d",
+      "displayName": "Intervalo de tiempo",
+      "description": "",
+      "beginVariableName": "_startTime",
+      "endVariableName": "_endTime",
+      "defaultValue": {
+        "kind": "dynamic",
+        "count": 1,
+        "unit": "hours"
+      },
+      "showOnPages": {
+        "kind": "all"
+      }
+    }
+  ],
+  "dataSources": [
+    {
+      "id": "4fd46902-7496-42ad-bd7d-26b3468e55d2",
+      "kind": "kusto-trident",
+      "scopeId": "kusto-trident",
+      "clusterUri": "",
+      "database": "86f86df7-308f-b9d1-4174-2c7be6c7c8d5",
+      "name": "EH_Tutorial",
+      "workspace": "00000000-0000-0000-0000-000000000000"
+    }
+  ],
+  "pages": [
+    {
+      "name": "Página 1",
+      "id": "936ef56d-4ea5-4eeb-ac81-83221f6553e5"
+    }
+  ],
+  "queries": [
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "4fd46902-7496-42ad-bd7d-26b3468e55d2"
+      },
+      "text": "Bike_Table\n| summarize arg_max(current_time,No_Bikes) by BikepointID\n| sort by BikepointID\n| render  columnchart with (ycolumns=No_Bikes, xcolumn=BikepointID)",
+      "id": "f33518f3-25b3-46fa-bf55-66f078820144",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "4fd46902-7496-42ad-bd7d-26b3468e55d2"
+      },
+      "text": "Bike_Table\n| where Neighbourhood  == 'Chelsea'\n| project current_time, No_Bikes\n| render timechart \n\n",
+      "id": "b44de1a1-2f53-43c4-b750-eb02328f6c83",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "4fd46902-7496-42ad-bd7d-26b3468e55d2"
+      },
+      "text": "Bike_Table\n| where Neighbourhood  == 'Chelsea'",
+      "id": "d16184db-1510-4fe0-a4de-a09083249278",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "4fd46902-7496-42ad-bd7d-26b3468e55d2"
+      },
+      "text": "Bike_Table\n| where Neighbourhood  == 'Chelsea'\n| summarize count() by Street",
+      "id": "b57cdb4e-7dda-41c9-a002-a04745ec30d3",
+      "usedVariables": []
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "config": "{\"version\":\"5.69\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY25SU12\",\"version\":{\"visual\":\"2.5.0\",\"report\":\"3.1.0\",\"page\":\"2.3.0\"},\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY25SU12",
+            "path": "BaseThemes/CY25SU12.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Página 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "c0379a428ac81b2feec8",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"5183553f22de2ee72090\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"z\":0,\"width\":474.17759791211796,\"height\":371.70305676855895,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"map\",\"projections\":{\"Y\":[{\"queryRef\":\"Kusto Query Result.lat\"}],\"X\":[{\"queryRef\":\"Avg(Kusto Query Result.lon)\"}],\"Size\":[{\"queryRef\":\"Sum(Kusto Query Result.No_Bikes)\"}],\"Series\":[{\"queryRef\":\"Kusto Query Result.Neighbourhood\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"k\",\"Entity\":\"Kusto Query Result\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"lat\"},\"Name\":\"Kusto Query Result.lat\",\"NativeReferenceName\":\"lat\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"lon\"},\"Name\":\"Avg(Kusto Query Result.lon)\",\"NativeReferenceName\":\"lon\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"No_Bikes\"}},\"Function\":0},\"Name\":\"Sum(Kusto Query Result.No_Bikes)\",\"NativeReferenceName\":\"Suma de No_Bikes\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"Neighbourhood\"},\"Name\":\"Kusto Query Result.Neighbourhood\",\"NativeReferenceName\":\"Neighbourhood\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 371.70,
+          "width": 474.18,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"f3ae2939306070eebf08\",\"layouts\":[{\"id\":0,\"position\":{\"x\":493.7410446233625,\"y\":12.110569050218341,\"z\":1,\"width\":475.1091703056769,\"height\":338.16593886462886,\"tabOrder\":1}}],\"singleVisual\":{\"visualType\":\"columnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Kusto Query Result.Neighbourhood\",\"active\":true}],\"Y\":[{\"queryRef\":\"Sum(Kusto Query Result.No_Bikes)\"},{\"queryRef\":\"Sum(Kusto Query Result.No_Empty_Docks)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"k\",\"Entity\":\"Kusto Query Result\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"Neighbourhood\"},\"Name\":\"Kusto Query Result.Neighbourhood\",\"NativeReferenceName\":\"Neighbourhood\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"No_Bikes\"}},\"Function\":0},\"Name\":\"Sum(Kusto Query Result.No_Bikes)\",\"NativeReferenceName\":\"Suma de No_Bikes\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"No_Empty_Docks\"}},\"Function\":0},\"Name\":\"Sum(Kusto Query Result.No_Empty_Docks)\",\"NativeReferenceName\":\"Suma de No_Empty_Docks\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"No_Bikes\"}},\"Function\":0}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 338.17,
+          "width": 475.11,
+          "x": 493.74,
+          "y": 12.11,
+          "z": 1.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}
