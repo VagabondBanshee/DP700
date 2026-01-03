@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "PBI_WWI_PROFIT"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a659250a-95e6-a5c9-4c2e-9d7315168f04"
+  }
+}
