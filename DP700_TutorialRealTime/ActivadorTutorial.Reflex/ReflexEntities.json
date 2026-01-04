@@ -1,0 +1,61 @@
+[
+  {
+    "uniqueIdentifier": "6b2a39d4-f2f3-4c68-961f-762ac208d8bf",
+    "payload": {
+      "name": "ES_Tutorial",
+      "description": "Container Description",
+      "type": "eventstreams"
+    },
+    "type": "container-v1"
+  },
+  {
+    "uniqueIdentifier": "6c2f46ce-3074-4cc1-ad4a-e7a46305f513",
+    "payload": {
+      "name": "ESTutorial-stream evento",
+      "metadata": {
+        "eventstreamArtifactId": "d4a623a1-ff3c-44a9-a57d-fd22c1a9e06b",
+        "eventTypes": [
+          {
+            "name": "ES_Tutorial"
+          }
+        ]
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "6b2a39d4-f2f3-4c68-961f-762ac208d8bf"
+      }
+    },
+    "type": "eventstreamSource-v1"
+  },
+  {
+    "uniqueIdentifier": "208b246f-7553-4f9c-84ed-4acfb12a31e1",
+    "payload": {
+      "name": "ESTutorial-stream evento",
+      "parentContainer": {
+        "targetUniqueIdentifier": "6b2a39d4-f2f3-4c68-961f-762ac208d8bf"
+      },
+      "definition": {
+        "type": "Event",
+        "instance": "{\"steps\":[{\"id\":\"08afcadf-ea59-4d33-aa70-08a1bc500e72\",\"name\":\"SourceEventStep\",\"rows\":[{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"6c2f46ce-3074-4cc1-ad4a-e7a46305f513\"}],\"kind\":\"SourceReference\",\"name\":\"SourceSelector\"}]}],\"templateId\":\"SourceEvent\",\"templateVersion\":\"1.2.3\"}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "571fc5d0-36f3-40fc-899f-e65ad283a37e",
+    "payload": {
+      "name": "TutorialRule",
+      "parentContainer": {
+        "targetUniqueIdentifier": "6b2a39d4-f2f3-4c68-961f-762ac208d8bf"
+      },
+      "definition": {
+        "type": "Rule",
+        "instance": "{\"steps\":[{\"id\":\"67ef5817-668f-472f-b758-f795012410cb\",\"name\":\"FieldsDefaultsStep\",\"rows\":[{\"arguments\":[{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"208b246f-7553-4f9c-84ed-4acfb12a31e1\"}],\"kind\":\"EventReference\",\"name\":\"event\",\"type\":\"complex\"}],\"kind\":\"Event\",\"name\":\"EventSelector\"}]},{\"id\":\"13a7bbac-844a-4dd4-b8c6-35a798299f0c\",\"name\":\"EventDetectStep\",\"rows\":[{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"No_Bikes\"}],\"kind\":\"EventField\",\"name\":\"EventFieldSelector\"},{\"arguments\":[{\"name\":\"op\",\"type\":\"string\",\"value\":\"IsLessThan\"},{\"name\":\"threshold\",\"type\":\"number\",\"value\":5}],\"kind\":\"NumberValueCondition\",\"name\":\"NumberValueCondition\"}]},{\"id\":\"c8268956-5f04-4a81-8245-39875b8d01e7\",\"name\":\"ActStep\",\"rows\":[{\"kind\":\"TeamsMessage\",\"name\":\"TeamsBinding\",\"arguments\":[{\"name\":\"messageLocale\",\"type\":\"string\",\"value\":\"en-us\"},{\"name\":\"recipients\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"quique@banshee86.es\"}]},{\"name\":\"headline\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"Alerta del activador\"}]},{\"name\":\"optionalMessage\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"Se ha cumplido la condición\"}]},{\"name\":\"additionalInformation\",\"type\":\"array\",\"values\":[{\"arguments\":[{\"name\":\"name\",\"type\":\"string\",\"value\":\"No_Bikes\"},{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"No_Bikes\"}],\"kind\":\"EventFieldReference\",\"name\":\"reference\",\"type\":\"complexReference\"}],\"kind\":\"NameReferencePair\",\"type\":\"complex\"}]}]}]}],\"templateId\":\"EventTrigger\",\"templateVersion\":\"1.2.3\"}",
+        "settings": {
+          "shouldRun": true,
+          "shouldApplyRuleOnUpdate": false
+        }
+      }
+    },
+    "type": "timeSeriesView-v1"
+  }
+]

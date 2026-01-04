@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "AnomalyDetector",
+    "displayName": "No Darsenas VAcias"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e55588ed-477e-9bfc-4cf7-1ccd2f881068"
+  }
+}

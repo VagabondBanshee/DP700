@@ -1,0 +1,28 @@
+{
+  "queryset": {
+    "version": "1.0.0",
+    "dataSources": [
+      {
+        "id": "b122e831-e83d-4479-b0b8-91abd1a2e017",
+        "clusterUri": "https://trd-99pf54yd78eyw4ajtn.z6.kusto.fabric.microsoft.com",
+        "type": "Fabric",
+        "databaseItemId": "a8badb58-48ca-40ad-b05c-af5ec3489145",
+        "databaseItemName": "EH_RealTime"
+      }
+    ],
+    "tabs": [
+      {
+        "id": "07a41e11-ac2d-43ae-9644-16ed5b828a2e",
+        "content": "//***********************************************************************************************************\n// Here are two articles to help you get started with KQL:\n// KQL reference guide - https://aka.ms/KQLguide\n// SQL - KQL conversions - https://aka.ms/sqlcheatsheet\n//***********************************************************************************************************\n\n// Mueve los Datos a una tabla\n.alter table RawData (BikepointID:string,Street:string,Neighbourhood:string,Latitude:real,Longitude:real,No_Bikes:long,No_Empty_Docks:long,Timestamp:datetime) with (folder=\"Bronze\")\n\n// Crea Tabla de datos transformados\n.create table TransformedData (BikepointID: int, Street: string, Neighbourhood: string, Latitude: real, Longitude: real, No_Bikes: long, No_Empty_Docks: long, Timestamp: datetime, BikesToBeFilled: long, Action: string) with (folder=\"Silver\")\n\n//Función lógica de Transforqmación\n.create-or-alter function TransformRawData() {\nRawData\n| parse BikepointID with * \"BikePoints_\" BikepointID:int\n| extend BikesToBeFilled = No_Empty_Docks - No_Bikes\n| extend Action = iff(BikesToBeFilled > 0, tostring(BikesToBeFilled), \"NA\")\n }\n\n // Politica de Actualizacion para la tabla transformada\n .alter table TransformedData policy update\n ```[{\n     \"IsEnabled\": true,\n     \"Source\": \"RawData\",\n     \"Query\": \"TransformRawData()\",\n     \"IsTransactional\": false,\n     \"PropagateIngestionProperties\": false\n }]```\n\n\nRawData\n| take 10\n\nTransformedData\n| take 10\n\n\nTransformedData\n| where BikepointID > 100 and Neighbourhood == \"Chelsea\"\n| project Timestamp, No_Bikes\n| render timechart\n\n// Crea una vista materializada\n// arg_max(Timestamp,No_Bikes) by BikepointID = Dime cuántas bicicletas había en cada estación la última vez que miramos\n.create-or-alter materialized-view with (folder=\"Gold\") AggregatedData on table TransformedData\n{\n   TransformedData\n   | summarize arg_max(Timestamp,No_Bikes) by BikepointID\n}\n\nAggregatedData\n| sort by BikepointID\n| render columnchart with (ycolumns=No_Bikes,xcolumn=BikepointID)\n\n//Este edutor admite codigo T-SQL\nSELECT top(10) *\nFROM AggregatedData\nORDER BY No_Bikes DESC\n\n// Convierte una sentencia T-SQl a KQL\nexplain\nSELECT top(10) *\nFROM AggregatedData\nORDER BY No_Bikes DESC",
+        "title": "Consultas Base",
+        "dataSourceId": "b122e831-e83d-4479-b0b8-91abd1a2e017"
+      },
+      {
+        "id": "6be94c39-1988-4004-8c45-36440078ea1e",
+        "content": "TransformedData\n| where ingestion_time() > ago(30d)\n| project Street, Neighbourhood, toreal(Latitude), toreal(Longitude), No_Bikes, No_Empty_Docks\n| summarize sum(No_Bikes), sum(No_Empty_Docks) by Street, Neighbourhood, Latitude, Longitude",
+        "title": "Mostrar en el Mapa",
+        "dataSourceId": "b122e831-e83d-4479-b0b8-91abd1a2e017"
+      }
+    ]
+  }
+}

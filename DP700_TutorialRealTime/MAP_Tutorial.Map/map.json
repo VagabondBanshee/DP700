@@ -1,0 +1,15 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/map/definition/1.0.0/schema.json",
+  "basemap": {
+    "options": null,
+    "controls": null,
+    "backgroundColor": null,
+    "theme": null
+  },
+  "dataSources": {
+    "lakehouses": [],
+    "kqlDataBases": []
+  },
+  "layerSources": [],
+  "layerSettings": []
+}

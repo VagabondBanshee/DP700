@@ -1,0 +1,137 @@
+{
+  "schema_version": 67,
+  "tiles": [
+    {
+      "id": "b9e3e77c-a3bb-4082-90e8-09e3a5668877",
+      "title": "New Tile",
+      "visualType": "column",
+      "pageId": "9fb436ff-f5f1-4410-b50f-0172fdc3f5a8",
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "width": 9,
+        "height": 7
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "c7290e3c-e555-4656-b705-78995c71e3b3"
+      },
+      "visualOptions": {
+        "multipleYAxes": {
+          "base": {
+            "id": "-1",
+            "label": "",
+            "columns": [],
+            "yAxisMaximumValue": null,
+            "yAxisMinimumValue": null,
+            "yAxisScale": "linear",
+            "horizontalLines": []
+          },
+          "additional": [],
+          "showMultiplePanels": false
+        },
+        "hideLegend": false,
+        "legendLocation": "bottom",
+        "xColumnTitle": "",
+        "xColumn": null,
+        "yColumns": null,
+        "seriesColumns": [
+          "No_Bikes"
+        ],
+        "xAxisScale": "linear",
+        "verticalLine": "",
+        "crossFilter": [],
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "forceAxisTicks": false,
+        "drillthrough": [],
+        "selectedDataOnLoad": {
+          "all": true,
+          "limit": 10
+        }
+      }
+    },
+    {
+      "id": "c432d8e9-bbe8-4a37-bb73-86d5fce0afcd",
+      "title": "Nuevo icono",
+      "visualType": "table",
+      "pageId": "9fb436ff-f5f1-4410-b50f-0172fdc3f5a8",
+      "layout": {
+        "x": 9,
+        "y": 0,
+        "width": 9,
+        "height": 7
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "1ef9de1f-44c2-47fb-af26-e937acdca67e"
+      },
+      "visualOptions": {
+        "table__enableRenderLinks": true,
+        "colorRulesDisabled": true,
+        "crossFilter": [],
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "drillthrough": [],
+        "table__renderLinks": [],
+        "colorRules": []
+      }
+    }
+  ],
+  "baseQueries": [],
+  "parameters": [
+    {
+      "kind": "duration",
+      "id": "024b7df9-b4e1-4d9a-869f-ea7ceb692f90",
+      "displayName": "Intervalo de tiempo",
+      "description": "",
+      "beginVariableName": "_startTime",
+      "endVariableName": "_endTime",
+      "defaultValue": {
+        "kind": "dynamic",
+        "count": 1,
+        "unit": "hours"
+      },
+      "showOnPages": {
+        "kind": "all"
+      }
+    }
+  ],
+  "dataSources": [
+    {
+      "id": "add45f79-6d4c-491d-922f-f358ea39f894",
+      "kind": "kusto-trident",
+      "scopeId": "kusto-trident",
+      "clusterUri": "",
+      "database": "c3489145-af5e-b05c-40ad-48caa8badb58",
+      "name": "EH_RealTime",
+      "workspace": "00000000-0000-0000-0000-000000000000"
+    }
+  ],
+  "pages": [
+    {
+      "name": "Página 1",
+      "id": "9fb436ff-f5f1-4410-b50f-0172fdc3f5a8"
+    }
+  ],
+  "queries": [
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "add45f79-6d4c-491d-922f-f358ea39f894"
+      },
+      "text": "AggregatedData\n| sort by BikepointID\n| render columnchart with (ycolumns=No_Bikes,xcolumn=BikepointID)\n\n",
+      "id": "c7290e3c-e555-4656-b705-78995c71e3b3",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "add45f79-6d4c-491d-922f-f358ea39f894"
+      },
+      "text": "// Escriba su consulta KQL (ejemplo):\n// <table name>\n// | where <columna de fecha y hora> between (['_startTime'] .. ['_endTime']) // Filtrado de intervalo de tiempo\n// | take 100\nRawData\n| where Timestamp > ago(1h)",
+      "id": "1ef9de1f-44c2-47fb-af26-e937acdca67e",
+      "usedVariables": []
+    }
+  ]
+}

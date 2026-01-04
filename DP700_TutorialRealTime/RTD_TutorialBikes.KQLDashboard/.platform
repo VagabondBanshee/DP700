@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "KQLDashboard",
+    "displayName": "RTD_TutorialBikes",
+    "description": "RTD_TutorialBikes"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "45510ea7-c1e4-b1ca-44f9-4689285c8ea2"
+  }
+}
