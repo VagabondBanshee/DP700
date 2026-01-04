@@ -8,12 +8,12 @@
 # META   },
 # META   "dependencies": {
 # META     "lakehouse": {
-# META       "default_lakehouse": "c7b9b22a-a04a-4cbc-9670-3b065dfb2fba",
-# META       "default_lakehouse_name": "churnLakehouse",
-# META       "default_lakehouse_workspace_id": "e1fe0710-48e3-433a-a67b-f0ce746fe1f6",
+# META       "default_lakehouse": "c01dd8f4-03d1-46bf-b5e9-040f59966ca3",
+# META       "default_lakehouse_name": "LH_CompilacionModelo",
+# META       "default_lakehouse_workspace_id": "f98e8a5b-6f39-49f5-b226-1a6e01ae59fc",
 # META       "known_lakehouses": [
 # META         {
-# META           "id": "c7b9b22a-a04a-4cbc-9670-3b065dfb2fba"
+# META           "id": "c01dd8f4-03d1-46bf-b5e9-040f59966ca3"
 # META         }
 # META       ]
 # META     }
@@ -98,6 +98,7 @@
 import pandas as pd
 SEED = 12345
 df_clean = spark.read.format("delta").load("Tables/df_clean").toPandas()
+df_clean.head()
 
 # METADATA ********************
 
@@ -192,6 +193,31 @@ X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.
 # META   "language_group": "synapse_pyspark"
 # META }
 
+# CELL ********************
+
+# Forma correcta de leer una Tabla Gestionada (Managed Table)
+# No usamos rutas ("path"), usamos el nombre registrado en el catálogo
+df_test_read = spark.table("df_test")
+
+display(df_test_read.limit(5))
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # MARKDOWN ********************
 
 # ### Save test data to a delta table
@@ -201,9 +227,17 @@ X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.
 # CELL ********************
 
 table_name = "df_test"
-# Create PySpark DataFrame from Pandas
-df_test=spark.createDataFrame(X_test)
-df_test.write.mode("overwrite").format("delta").save(f"Tables/{table_name}")
+
+# Convertir a Spark
+# X_test no suele tener problemas de tipos, pero aseguramos
+sparkDF = spark.createDataFrame(X_test)
+
+# Guardar como tabla gestionada
+sparkDF.write \
+    .mode("overwrite") \
+    .format("delta") \
+    .saveAsTable(table_name) # Esto la registra formalmente en el metastore
+
 print(f"Spark test DataFrame saved to delta table: {table_name}")
 
 # METADATA ********************

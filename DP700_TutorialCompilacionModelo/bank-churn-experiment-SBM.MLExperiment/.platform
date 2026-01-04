@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "MLExperiment",
+    "displayName": "bank-churn-experiment-SBM"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "7818b767-fdda-8697-4a85-bfcd358fca55"
+  }
+}
