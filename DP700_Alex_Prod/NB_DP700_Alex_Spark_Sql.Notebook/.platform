@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "NB_DP700_Alex_Spark_Sql"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "2c0c670c-23ad-b2ab-4ed6-a2919c56cbc4"
+  }
+}

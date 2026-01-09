@@ -1,0 +1,27 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "317147d9-ea53-860a-4bb7-a97275e1121d",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "dataset": {
+              "value": "animals",
+              "type": "string"
+            }
+          }
+        },
+        "policy": {
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Notebook1",
+        "dependsOn": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Warehouse",
+    "displayName": "WH_Alex_PRogramming"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "b42fdfd5-e695-a691-4931-6fcce42986ee"
+  }
+}

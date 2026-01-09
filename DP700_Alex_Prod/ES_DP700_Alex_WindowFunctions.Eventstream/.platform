@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Eventstream",
+    "displayName": "ES_DP700_Alex_WindowFunctions"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a5c56e4c-631a-b0ef-43b4-186826068bf8"
+  }
+}

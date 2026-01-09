@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Warehouse",
+    "displayName": "WH_DP700_Alex"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a1fab3e3-3178-9b3e-4ca7-1a06ec91118d"
+  }
+}
