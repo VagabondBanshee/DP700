@@ -1,0 +1,55 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "name": "Set variable1",
+        "type": "SetVariable",
+        "dependsOn": [],
+        "policy": {
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "variableName": "pipelineReturnValue",
+          "value": [
+            {
+              "key": "rv1",
+              "value": {
+                "type": "String",
+                "content": "Valor de Cadena"
+              }
+            },
+            {
+              "key": "rv2",
+              "value": {
+                "type": "Array",
+                "content": [
+                  {
+                    "type": "String",
+                    "content": "a"
+                  },
+                  {
+                    "type": "String",
+                    "content": "b"
+                  },
+                  {
+                    "type": "String",
+                    "content": "c"
+                  }
+                ]
+              }
+            },
+            {
+              "key": "rv3",
+              "value": {
+                "type": "Expression",
+                "content": "@utcNow()"
+              }
+            }
+          ],
+          "setSystemVariable": true
+        }
+      }
+    ]
+  }
+}

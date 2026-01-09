@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "PL_StoreProcedures"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "6db7af4a-3ee0-a3a4-4d86-dc03247d0430"
+  }
+}

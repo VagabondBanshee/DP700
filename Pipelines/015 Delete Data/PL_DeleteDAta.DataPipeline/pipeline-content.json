@@ -1,0 +1,92 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Delete",
+        "typeProperties": {
+          "enableLogging": false,
+          "datasetSettings": {
+            "type": "Binary",
+            "typeProperties": {
+              "location": {
+                "type": "LakehouseLocation",
+                "folderPath": "source",
+                "fileName": "movies_file.csv"
+              }
+            },
+            "linkedService": {
+              "name": "LH_DeleteData",
+              "properties": {
+                "type": "Lakehouse",
+                "typeProperties": {
+                  "artifactId": "71d44936-bc40-a72b-4464-4404ecf67f7d",
+                  "workspaceId": "00000000-0000-0000-0000-000000000000",
+                  "rootFolder": "Files"
+                },
+                "annotations": []
+              }
+            },
+            "annotations": []
+          },
+          "storeSettings": {
+            "type": "LakehouseReadSettings",
+            "recursive": true,
+            "enablePartitionDiscovery": false,
+            "modifiedDatetimeStart": {
+              "value": "@pipeline().TriggerTime",
+              "type": "Expression"
+            },
+            "maxConcurrentConnections": 1
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Delete data1",
+        "dependsOn": []
+      },
+      {
+        "type": "IfCondition",
+        "typeProperties": {
+          "expression": {
+            "value": "@greater(activity('Delete data1').output.filesDeleted,0)",
+            "type": "Expression"
+          },
+          "ifTrueActivities": [
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": 1
+              },
+              "name": "Borrado",
+              "dependsOn": []
+            }
+          ],
+          "ifFalseActivities": [
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": 1
+              },
+              "name": "No Borrado",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "If Condition1",
+        "dependsOn": [
+          {
+            "activity": "Delete data1",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

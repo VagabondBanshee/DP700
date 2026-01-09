@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Warehouse",
+    "displayName": "DW_StoredProcedures"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e917a641-bb54-8ec1-4705-3de3ea3a94b2"
+  }
+}

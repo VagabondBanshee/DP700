@@ -1,0 +1,100 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "name": "Stored procedure1",
+        "type": "SqlServerStoredProcedure",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "storedProcedureName": "[fabric_de_series_020].[storedproc1]",
+          "storedProcedureParameters": {
+            "param1": {
+              "value": {
+                "value": "@pipeline().parameters.var1",
+                "type": "Expression"
+              },
+              "type": "String"
+            },
+            "param2": {
+              "value": {
+                "value": "@pipeline().parameters.var2",
+                "type": "Expression"
+              },
+              "type": "Int32"
+            }
+          }
+        },
+        "linkedService": {
+          "name": "DW_StoredProcedures",
+          "properties": {
+            "annotations": [],
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "endpoint": "2gz2ldcmujaujkpkqzwwa22cku-inlrjox2edqudfipqiy7l5hpja.datawarehouse.fabric.microsoft.com",
+              "artifactId": "ea3a94b2-3de3-4705-8ec1-bb54e917a641",
+              "workspaceId": "ba145743-20fa-41e1-950f-8231f5f4ef48"
+            }
+          }
+        }
+      },
+      {
+        "name": "Script1",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "Stored procedure1",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "linkedService": {
+          "name": "DW_StoredProcedures",
+          "properties": {
+            "annotations": [],
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "endpoint": "2gz2ldcmujaujkpkqzwwa22cku-inlrjox2edqudfipqiy7l5hpja.datawarehouse.fabric.microsoft.com",
+              "artifactId": "ea3a94b2-3de3-4705-8ec1-bb54e917a641",
+              "workspaceId": "ba145743-20fa-41e1-950f-8231f5f4ef48"
+            }
+          }
+        },
+        "typeProperties": {
+          "scripts": [
+            {
+              "type": "Query",
+              "text": {
+                "value": "EXEC [fabric_de_series_020].[storedproc2] \n\n    @param1 = '@{pipeline().parameters.var1}',\n\n    @param2 = @{pipeline().parameters.var2}",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        }
+      }
+    ],
+    "parameters": {
+      "var1": {
+        "type": "string"
+      },
+      "var2": {
+        "type": "int"
+      }
+    }
+  }
+}

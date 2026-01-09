@@ -1,0 +1,1 @@
+CREATE SCHEMA fabric_de_series_020;
