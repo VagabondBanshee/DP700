@@ -24,7 +24,7 @@
         "type": "Office365Email",
         "typeProperties": {
           "body": "@concat('Copy Job Finalizado: ',\npipeline().TriggerTime,\n', con el resultado: ',\nactivity('Copy job_0e7').output\n)",
-          "to": "etorron@animsa.es",
+          "to": "quique@banshee86.es",
           "subject": "Copy job Finalizado"
         },
         "externalReferences": {
