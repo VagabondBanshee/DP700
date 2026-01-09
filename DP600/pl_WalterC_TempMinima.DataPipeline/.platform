@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "pl_WalterC_TempMinima"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e7727c92-96a2-b33a-4876-fd32298c1d8f"
+  }
+}

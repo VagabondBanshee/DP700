@@ -1,0 +1,164 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "BinarySource",
+            "formatSettings": {
+              "type": "BinaryReadSettings"
+            },
+            "storeSettings": {
+              "type": "HttpReadSettings",
+              "requestMethod": "GET"
+            },
+            "datasetSettings": {
+              "type": "Binary",
+              "typeProperties": {
+                "location": {
+                  "type": "HttpServerLocation",
+                  "relativeUrl": "Datos-CambioClimatico/refs/heads/main/output/tminima_dmc/1991/1991_tminima_dmc.csv"
+                }
+              },
+              "externalReferences": {
+                "connection": "9f94b0a4-9461-4b6b-86a9-65e08b998e05"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "BinarySink",
+            "storeSettings": {
+              "type": "LakehouseWriteSettings"
+            },
+            "datasetSettings": {
+              "type": "Binary",
+              "typeProperties": {
+                "location": {
+                  "type": "LakehouseLocation",
+                  "folderPath": "MinisterioCiencias"
+                }
+              },
+              "linkedService": {
+                "name": "LH_RAW_WalterC",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "52efceec-e1d7-4962-985d-9d71704ab2cd",
+                    "workspaceId": "a6b99220-13b0-4034-a6dd-9aa70312e882",
+                    "rootFolder": "Files"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Desde GitHub a Lakehouse",
+        "description": "Mover DAtos de Temp Minima hacia Lakehouse",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": []
+      },
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "isSequential": true,
+          "items": {
+            "value": "@pipeline().parameters.array_annos",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "Copy",
+              "typeProperties": {
+                "source": {
+                  "type": "BinarySource",
+                  "formatSettings": {
+                    "type": "BinaryReadSettings"
+                  },
+                  "storeSettings": {
+                    "type": "HttpReadSettings",
+                    "requestMethod": "GET"
+                  },
+                  "datasetSettings": {
+                    "type": "Binary",
+                    "typeProperties": {
+                      "location": {
+                        "type": "HttpServerLocation",
+                        "relativeUrl": {
+                          "value": "@concat(\n    'Datos-CambioClimatico/refs/heads/main/output/tminima_dmc/'\n    ,item()\n    ,'/'\n    ,item()\n    ,'_tminima_dmc.csv'\n)",
+                          "type": "Expression"
+                        }
+                      }
+                    },
+                    "externalReferences": {
+                      "connection": "9f94b0a4-9461-4b6b-86a9-65e08b998e05"
+                    },
+                    "annotations": []
+                  }
+                },
+                "sink": {
+                  "type": "BinarySink",
+                  "storeSettings": {
+                    "type": "LakehouseWriteSettings"
+                  },
+                  "datasetSettings": {
+                    "type": "Binary",
+                    "typeProperties": {
+                      "location": {
+                        "type": "LakehouseLocation",
+                        "folderPath": "MinisterioCiencias"
+                      }
+                    },
+                    "linkedService": {
+                      "name": "LH_RAW_WalterC",
+                      "properties": {
+                        "type": "Lakehouse",
+                        "typeProperties": {
+                          "artifactId": "704ab2cd-9d71-985d-4962-e1d752efceec",
+                          "workspaceId": "00000000-0000-0000-0000-000000000000",
+                          "rootFolder": "Files"
+                        },
+                        "annotations": []
+                      }
+                    },
+                    "annotations": []
+                  }
+                },
+                "enableStaging": false
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "ciclo_copia_gh-lh",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "Ciclo_annos",
+        "description": "REcorre array y va cambiando la url del origen de datos para ir seleccionado los distintos ficheros de cada año",
+        "dependsOn": []
+      }
+    ],
+    "parameters": {
+      "array_annos": {
+        "type": "array"
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "DP_CopyDataIntoDW"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "b420b63b-e032-abab-47f3-975fedd55bec"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "DW_Dp600"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d17542a5-a465-b64a-4613-83b0c340670d"
+  }
+}

@@ -1,0 +1,65 @@
+table DimProduct
+	lineageTag: 273ed37b-237f-498d-a0d1-b0702d92ccb7
+	sourceLineageTag: [dbo].[DimProduct]
+
+	column ProductKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 0e379e26-9e19-4830-b28a-6fcc1222c54b
+		sourceLineageTag: ProductKey
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductAltKey
+		dataType: string
+		sourceProviderType: varchar(25)
+		lineageTag: 3429171e-3bb7-4eb7-b259-1909b9cc0a23
+		sourceLineageTag: ProductAltKey
+		summarizeBy: none
+		sourceColumn: ProductAltKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductName
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: c87ad8c3-4d02-4b10-bc13-65a36c049554
+		sourceLineageTag: ProductName
+		summarizeBy: none
+		sourceColumn: ProductName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: 66814315-0a55-4f8d-a294-fd7b6f1b5c17
+		sourceLineageTag: Category
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column ListPrice
+		dataType: int64
+		formatString: 0
+		sourceProviderType: decimal(18, 0)
+		lineageTag: 5d093032-11c3-43b1-9a60-159623e818c5
+		sourceLineageTag: ListPrice
+		summarizeBy: none
+		sourceColumn: ListPrice
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimProduct = entity
+		mode: directLake
+		source
+			entityName: DimProduct
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+
