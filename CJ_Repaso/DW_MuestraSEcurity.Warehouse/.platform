@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Warehouse",
+    "displayName": "DW_MuestraSEcurity"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "aaee8c8b-af7c-90eb-428a-3ee1c3f087bc"
+  }
+}
