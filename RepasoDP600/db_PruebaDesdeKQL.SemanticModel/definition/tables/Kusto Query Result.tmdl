@@ -1,0 +1,114 @@
+table 'Kusto Query Result'
+	lineageTag: 0bba50ad-0b9a-44a2-842a-f39e53264bda
+
+	column time
+		dataType: string
+		lineageTag: 6891f895-0ae2-43c7-a7b6-b98bed5d727f
+		summarizeBy: none
+		sourceColumn: time
+
+		annotation SummarizationSetBy = Automatic
+
+	column symbol
+		dataType: string
+		lineageTag: e2baa083-19a8-4712-8a94-d542d2c5b0d0
+		summarizeBy: none
+		sourceColumn: symbol
+
+		annotation SummarizationSetBy = Automatic
+
+	column sector
+		dataType: string
+		lineageTag: 1508e438-35bf-4aea-9d11-ec7e26385ee2
+		summarizeBy: none
+		sourceColumn: sector
+
+		annotation SummarizationSetBy = Automatic
+
+	column securityType
+		dataType: string
+		lineageTag: a09ba6b2-c101-4fea-b388-52ebde8a0139
+		summarizeBy: none
+		sourceColumn: securityType
+
+		annotation SummarizationSetBy = Automatic
+
+	column bidPrice
+		dataType: double
+		lineageTag: 24de56b8-96ec-4f6c-abc9-d9634ce477dd
+		summarizeBy: sum
+		sourceColumn: bidPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column bidSize
+		dataType: double
+		lineageTag: 31ba585e-5e74-4c76-8871-dd3f0daa1e65
+		summarizeBy: sum
+		sourceColumn: bidSize
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column lastUpdated
+		dataType: int64
+		formatString: 0
+		lineageTag: 6ecf1685-feb3-4ece-beb1-10676379c864
+		summarizeBy: sum
+		sourceColumn: lastUpdated
+
+		annotation SummarizationSetBy = Automatic
+
+	column lastSalePrice
+		dataType: double
+		lineageTag: ea0c2869-0481-481a-8ad8-9f4eebe847b5
+		summarizeBy: sum
+		sourceColumn: lastSalePrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column lastSaleSize
+		dataType: double
+		lineageTag: f1b1d64b-db6d-4609-a6f7-622da9086ac2
+		summarizeBy: sum
+		sourceColumn: lastSaleSize
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column lastSaleTime
+		dataType: int64
+		formatString: 0
+		lineageTag: b76d6a5b-204c-4dc3-8302-badcbcc7c050
+		summarizeBy: sum
+		sourceColumn: lastSaleTime
+
+		annotation SummarizationSetBy = Automatic
+
+	column volume
+		dataType: double
+		lineageTag: 40724f97-b28f-4ff0-9af6-6e9b45ade339
+		summarizeBy: sum
+		sourceColumn: volume
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Kusto Query Result' = m
+		mode: directQuery
+		source =
+				let
+				Source = AzureDataExplorer.Contents("https://trd-kuhkd0z951q9w046r3.z1.kusto.fabric.microsoft.com", "fbb7877f-2b57-4230-be35-eee863fca811", "accionesBolsa
+				| where  symbol == ""NSFT""", [])
+				in
+				Source
+
+	annotation PBI_ResultType = Table
+

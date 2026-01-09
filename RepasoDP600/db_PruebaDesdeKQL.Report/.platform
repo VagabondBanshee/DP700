@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "db_PruebaDesdeKQL"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5e847a17-7577-a223-41ce-976787c803aa"
+  }
+}

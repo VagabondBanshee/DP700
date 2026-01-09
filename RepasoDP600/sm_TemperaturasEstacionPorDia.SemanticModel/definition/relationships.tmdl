@@ -1,0 +1,8 @@
+relationship 2f102316-2ade-ab40-437e-069b01b81f4c
+	fromColumn: fttemperaturas_estacionpordia.CodigoNacional
+	toColumn: dimEstacionesMeterologicas.CodigoNacional
+
+relationship de1d4d33-ed7f-4947-cfc1-028c6f683b3b
+	fromColumn: fttemperaturas_estacionpordia.fecha
+	toColumn: dimcalendariofechahora.fecha
+

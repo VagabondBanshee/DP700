@@ -1,0 +1,28 @@
+{
+  "queryset": {
+    "version": "1.0.0",
+    "dataSources": [
+      {
+        "id": "a8636742-9f38-4ad1-94d7-51ea9ce03b3c",
+        "clusterUri": "https://trd-kuhkd0z951q9w046r3.z1.kusto.fabric.microsoft.com",
+        "type": "Fabric",
+        "databaseItemId": "fbb7877f-2b57-4230-be35-eee863fca811",
+        "databaseItemName": "EH_Repaso"
+      }
+    ],
+    "tabs": [
+      {
+        "id": "d93c433d-ce0b-4438-9612-207d4288bb75",
+        "content": "//***********************************************************************************************************\n// Here are two articles to help you get started with KQL:\n// KQL reference guide - https://aka.ms/KQLguide\n// SQL - KQL conversions - https://aka.ms/sqlcheatsheet\n//***********************************************************************************************************\n\n// Use \"take\" to view a sample number of records in the table and check the data.\naccionesBolsa\n| take 100\n\n// See how many records are in the table.\naccionesBolsa\n| count\n\n// This query returns the number of ingestions per hour in the given table.\naccionesBolsa\n| summarize IngestionCount = count() by bin(ingestion_time(), 1h)\n\naccionesBolsa\n| project  symbol = \"NSFT\"\n\naccionesBolsa\n| where  symbol == \"NSFT\"",
+        "title": "Tab",
+        "dataSourceId": "a8636742-9f38-4ad1-94d7-51ea9ce03b3c"
+      },
+      {
+        "id": "312f8273-9721-4064-8963-3f6d2ca0e784",
+        "content": "-- See how many records are in the table.\nselect top 1000 * from accionesBolsa\n--\nexplain\nselect top 1000 * from accionesBolsa\n\naccionesBolsa\n| project ['time'], symbol, sector, securityType, bidPrice, bidSize, lastUpdated, lastSalePrice, lastSaleSize, lastSaleTime, volume\n| take int(1000)\n",
+        "title": "",
+        "dataSourceId": "a8636742-9f38-4ad1-94d7-51ea9ce03b3c"
+      }
+    ]
+  }
+}

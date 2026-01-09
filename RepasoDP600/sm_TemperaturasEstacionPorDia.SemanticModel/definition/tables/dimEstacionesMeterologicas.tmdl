@@ -1,0 +1,58 @@
+table dimEstacionesMeterologicas
+	lineageTag: 08c0f3a0-f941-4cd5-a5b8-772911380898
+	sourceLineageTag: [dbo].[dimEstacionesMeterologicas]
+
+	column CodigoNacional
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 83a04709-3001-4b75-8df3-a76dc999edae
+		sourceLineageTag: CodigoNacional
+		summarizeBy: none
+		sourceColumn: CodigoNacional
+
+		annotation SummarizationSetBy = Automatic
+
+	column latitud
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 964edd0b-4ea3-48c0-880e-eba3eab57b20
+		sourceLineageTag: latitud
+		summarizeBy: none
+		sourceColumn: latitud
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column longitud
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 5469107c-19e4-4b9a-bb75-672faaa1392c
+		sourceLineageTag: longitud
+		summarizeBy: none
+		sourceColumn: longitud
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column nombreEstacion
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f7854357-f5ac-4330-998d-f1a69b23b640
+		sourceLineageTag: nombreEstacion
+		summarizeBy: none
+		sourceColumn: nombreEstacion
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dimEstacionesMeterologicas = entity
+		mode: directLake
+		source
+			entityName: dimEstacionesMeterologicas
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Lakehouse",
+    "displayName": "LH_BRONCE_REPASO"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "24ba4a7d-d104-b823-4fc0-a5989e6698f7"
+  }
+}

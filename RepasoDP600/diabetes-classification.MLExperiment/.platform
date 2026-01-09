@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "MLExperiment",
+    "displayName": "diabetes-classification"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a4b50150-d31f-95c4-4fad-e03866ed4b3c"
+  }
+}

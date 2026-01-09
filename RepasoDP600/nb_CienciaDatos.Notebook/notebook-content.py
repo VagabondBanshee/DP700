@@ -1,0 +1,180 @@
+# Fabric notebook source
+
+# METADATA ********************
+
+# META {
+# META   "kernel_info": {
+# META     "name": "synapse_pyspark"
+# META   },
+# META   "dependencies": {}
+# META }
+
+# MARKDOWN ********************
+
+# # Data science in Microsoft Fabric
+
+
+# CELL ********************
+
+# Azure storage access info for open dataset diabetes
+blob_account_name = "azureopendatastorage"
+blob_container_name = "mlsamples"
+blob_relative_path = "diabetes"
+blob_sas_token = r"" # Blank since container is Anonymous access
+    
+# Set Spark config to access  blob storage
+wasbs_path = f"wasbs://%s@%s.blob.core.windows.net/%s" % (blob_container_name, blob_account_name, blob_relative_path)
+spark.conf.set("fs.azure.sas.%s.%s.blob.core.windows.net" % (blob_container_name, blob_account_name), blob_sas_token)
+print("Remote blob path: " + wasbs_path)
+    
+# Spark read parquet, note that it won't load any data yet by now
+df = spark.read.parquet(wasbs_path)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+display(df)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+df = df.toPandas()
+df.head()
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# Código generado por Data Wrangler para pandas DataFrame
+
+def clean_data(df):
+    # Columna 'Risk' creada a partir de una fórmula
+    df['Risk'] = (df['Y'] > 211.5).astype(int)
+    return df
+
+df_clean = clean_data(df.copy())
+display(df_clean)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+df_clean.describe()
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+from sklearn.model_selection import train_test_split
+    
+X, y = df_clean[['AGE','SEX','BMI','BP','S1','S2','S3','S4','S5','S6']].values, df_clean['Y'].values
+    
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=0)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+import mlflow
+experiment_name = "diabetes-regression"
+mlflow.set_experiment(experiment_name)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+from sklearn.linear_model import LinearRegression
+    
+with mlflow.start_run():
+   mlflow.autolog()
+    
+   model = LinearRegression()
+   model.fit(X_train, y_train)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+from sklearn.model_selection import train_test_split
+    
+X, y = df_clean[['AGE','SEX','BMI','BP','S1','S2','S3','S4','S5','S6']].values, df_clean['Risk'].values
+    
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=0)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+import mlflow
+experiment_name = "diabetes-classification"
+mlflow.set_experiment(experiment_name)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+from sklearn.linear_model import LogisticRegression
+    
+with mlflow.start_run():
+    mlflow.sklearn.autolog()
+
+    model = LogisticRegression(C=1/0.1, solver="liblinear").fit(X_train, y_train)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }

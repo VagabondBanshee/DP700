@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Reflex",
+    "displayName": "Activator 2025-09-22 17:28:33"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "3d742260-54e1-bfcc-4191-59302730bfaf"
+  }
+}

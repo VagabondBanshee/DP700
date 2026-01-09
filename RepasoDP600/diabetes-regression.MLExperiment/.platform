@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "MLExperiment",
+    "displayName": "diabetes-regression"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "83a319f6-b29d-a415-4557-a9172df0a204"
+  }
+}

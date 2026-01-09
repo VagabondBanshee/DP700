@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/graphqlApi/definition/1.0.0/schema.json",
+  "datasources": [
+    {
+      "objects": [
+        {
+          "actions": {
+            "Query": "Enabled",
+            "Query_by_pk": "Enabled",
+            "Create": "Enabled",
+            "Update": "Enabled",
+            "Delete": "Enabled"
+          },
+          "fieldMappings": {
+            "CustomerID": "CustomerID",
+            "ItemID": "ItemID",
+            "OrderDate": "OrderDate",
+            "Quantity": "Quantity",
+            "SalesOrderLineNumber": "SalesOrderLineNumber",
+            "SalesOrderNumber": "SalesOrderNumber",
+            "TaxAmount": "TaxAmount",
+            "UnitPrice": "UnitPrice"
+          },
+          "graphqlType": "Fact_Sales",
+          "relationships": [],
+          "sourceObject": "Sales.Fact_Sales",
+          "sourceObjectType": "Table"
+        }
+      ],
+      "sourceItemId": "716b6f02-70ad-4d22-ae77-888f4bf6a55d",
+      "sourceType": "DataWarehouse",
+      "sourceWorkspaceId": "d62a3a18-b622-4f96-af59-07c7c3b40eed"
+    }
+  ]
+}

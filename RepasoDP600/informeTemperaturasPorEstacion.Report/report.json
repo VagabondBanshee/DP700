@@ -1,0 +1,42 @@
+{
+  "config": "{\"version\":\"5.66\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"version\":{\"visual\":\"1.8.95\",\"report\":\"2.0.95\",\"page\":\"1.3.95\"},\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU10",
+            "path": "BaseThemes/CY24SU10.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Página 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "6908f56967f8cb25aada",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"59d3b1f56e9a7a31f0c4\",\"layouts\":[{\"id\":0,\"position\":{\"x\":9.504996446648972,\"y\":0,\"z\":0,\"width\":907.727160654977,\"height\":280.3973951761447,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"dimEstacionesMeterologicas.CodigoNacional\"},{\"queryRef\":\"dimEstacionesMeterologicas.nombreEstacion\"},{\"queryRef\":\"Sum(fttemperaturas_estacionpordia.Tmaxima)\"},{\"queryRef\":\"Sum(fttemperaturas_estacionpordia.Tminima)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dimEstacionesMeterologicas\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"fttemperaturas_estacionpordia\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"CodigoNacional\"},\"Name\":\"dimEstacionesMeterologicas.CodigoNacional\",\"NativeReferenceName\":\"CodigoNacional\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"nombreEstacion\"},\"Name\":\"dimEstacionesMeterologicas.nombreEstacion\",\"NativeReferenceName\":\"nombreEstacion\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Tmaxima\"}},\"Function\":0},\"Name\":\"Sum(fttemperaturas_estacionpordia.Tmaxima)\",\"NativeReferenceName\":\"Suma de Tmaxima\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Tminima\"}},\"Function\":0},\"Name\":\"Sum(fttemperaturas_estacionpordia.Tminima)\",\"NativeReferenceName\":\"Suma de Tminima\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 280.40,
+          "width": 907.73,
+          "x": 9.50,
+          "y": 0.00,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

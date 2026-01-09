@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Environment",
+    "displayName": "en_swift",
+    "description": "Entorno"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "7bf7ab36-5cd4-81d7-41c3-1d03a2c14e9b"
+  }
+}

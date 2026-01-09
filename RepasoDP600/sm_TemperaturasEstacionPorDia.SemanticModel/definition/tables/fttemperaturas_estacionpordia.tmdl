@@ -1,0 +1,59 @@
+table fttemperaturas_estacionpordia
+	lineageTag: f70b8e5b-74a0-4c96-b3ca-96638eaedb9b
+	sourceLineageTag: [dbo].[fttemperaturas_estacionpordia]
+
+	column fecha
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 7a2fd33a-c87d-475d-a326-7bc157829535
+		sourceLineageTag: fecha
+		summarizeBy: none
+		sourceColumn: fecha
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tmaxima
+		dataType: double
+		sourceProviderType: float
+		lineageTag: b2e9041b-cc4f-406d-98d8-a320e8324477
+		sourceLineageTag: Tmaxima
+		summarizeBy: sum
+		sourceColumn: Tmaxima
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Tminima
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 1f448802-9959-4102-af14-773c2b605bc4
+		sourceLineageTag: Tminima
+		summarizeBy: sum
+		sourceColumn: Tminima
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CodigoNacional
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 4cca4cd7-6637-4be9-a47d-145b24cc5c96
+		sourceLineageTag: CodigoNacional
+		summarizeBy: none
+		sourceColumn: CodigoNacional
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fttemperaturas_estacionpordia = entity
+		mode: directLake
+		source
+			entityName: fttemperaturas_estacionpordia
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

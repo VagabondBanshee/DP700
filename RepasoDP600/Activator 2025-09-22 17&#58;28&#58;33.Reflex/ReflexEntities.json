@@ -1,0 +1,38 @@
+[
+  {
+    "uniqueIdentifier": "940a6977-fb07-4f3a-9612-05aba5963df6",
+    "payload": {
+      "name": "EventStream",
+      "metadata": {
+        "eventstreamArtifactId": "62abdf52-b34e-41b2-9c1d-9d3cf7528a18"
+      }
+    },
+    "type": "eventstreamSource-v1"
+  },
+  {
+    "uniqueIdentifier": "4880fd99-d283-48f1-bac8-a2c6c1542273",
+    "payload": {
+      "name": "ES_CapturaDatosStreamingRepaso-stream event",
+      "definition": {
+        "type": "Event",
+        "instance": "{\"templateId\":\"SourceEvent\",\"templateVersion\":\"1.1\",\"steps\":[{\"name\":\"SourceEventStep\",\"id\":\"89667863-987c-4db4-8de9-d87f4bb12262\",\"rows\":[{\"name\":\"SourceSelector\",\"kind\":\"SourceReference\",\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"940a6977-fb07-4f3a-9612-05aba5963df6\"}]}]}]}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "9dd37113-ffc9-46f6-b810-bc56553fdb88",
+    "payload": {
+      "name": "Alerta ES_CapturaDatosStreamingRepaso-stream event",
+      "definition": {
+        "type": "Rule",
+        "instance": "{\"steps\":[{\"id\":\"41b1c12a-0876-442d-a029-21a0a5a47dd3\",\"name\":\"FieldsDefaultsStep\",\"rows\":[{\"arguments\":[{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"4880fd99-d283-48f1-bac8-a2c6c1542273\"}],\"kind\":\"EventReference\",\"name\":\"event\",\"type\":\"complex\"}],\"kind\":\"Event\",\"name\":\"EventSelector\"},{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"symbol\"},{\"name\":\"default\",\"type\":\"string\",\"value\":\"\"},{\"name\":\"defaultType\",\"type\":\"string\",\"value\":\"Text\"}],\"kind\":\"EventFieldWithDefault\",\"name\":\"EventFieldWithDefaultSelector\"}]},{\"id\":\"baa62729-8086-4ceb-bf99-1519fae3933f\",\"name\":\"EventDetectStep\",\"rows\":[{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"symbol\"}],\"kind\":\"EventField\",\"name\":\"EventFieldSelector\"},{\"arguments\":[{\"name\":\"op\",\"type\":\"string\",\"value\":\"IsEqualTo\"},{\"name\":\"value\",\"type\":\"string\",\"value\":\"NFST\"}],\"kind\":\"TextValueCondition\",\"name\":\"TextValueCondition\"}]},{\"id\":\"5de10477-0f7d-4245-bf1f-e445b539bee8\",\"name\":\"EventDetectStep\",\"rows\":[{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"lastSalePrice\"}],\"kind\":\"EventField\",\"name\":\"EventFieldSelector\"},{\"arguments\":[{\"name\":\"op\",\"type\":\"string\",\"value\":\"IsLessThan\"},{\"name\":\"threshold\",\"type\":\"number\",\"value\":340}],\"kind\":\"NumberValueCondition\",\"name\":\"NumberValueCondition\"}]},{\"id\":\"353ce745-11f4-4957-a086-eb13cce1e9fe\",\"name\":\"ActStep\",\"rows\":[{\"arguments\":[{\"name\":\"messageLocale\",\"type\":\"string\",\"value\":\"en-us\"},{\"name\":\"sentTo\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"quique@banshee86.es\"}]},{\"name\":\"copyTo\",\"type\":\"array\",\"values\":[]},{\"name\":\"bCCTo\",\"type\":\"array\",\"values\":[]},{\"name\":\"subject\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"Alerta de Activator Alerta ES_CapturaDatosStreamingRepaso-stream event\"}]},{\"name\":\"headline\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"La condición para \\\"Alerta ES_CapturaDatosStreamingRepaso-stream event\\\" se ha cumplido.\"}]},{\"name\":\"optionalMessage\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"\"}]},{\"name\":\"additionalInformation\",\"type\":\"array\",\"values\":[]}],\"kind\":\"EmailMessage\",\"name\":\"EmailBinding\"}]}],\"templateId\":\"EventTrigger\",\"templateVersion\":\"1.2.2\"}",
+        "settings": {
+          "shouldRun": true,
+          "shouldApplyRuleOnUpdate": true
+        }
+      }
+    },
+    "type": "timeSeriesView-v1"
+  }
+]

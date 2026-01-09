@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Eventstream",
+    "displayName": "ES_CapturaDatosStreamingRepaso"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f7528a18-9d3c-9c1d-41b2-b34e62abdf52"
+  }
+}
