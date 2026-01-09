@@ -1,0 +1,70 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
+  "name": "9cdc098199137b999f84",
+  "position": {
+    "x": 10.052414760276974,
+    "y": 50.262073801384872,
+    "z": 0,
+    "height": 134.98956963800509,
+    "width": 280.03155403628716
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dTipo_Incidencia"
+                    }
+                  },
+                  "Property": "NombreIncidencia_eu"
+                }
+              },
+              "queryRef": "dTipo_Incidencia.NombreIncidencia_eu",
+              "nativeQueryRef": "Tipo Incidencia",
+              "active": true,
+              "displayName": "Tipo Incidencia"
+            }
+          ],
+          "fieldParameters": [
+            {
+              "parameterExpr": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Nombre Tipo Incidencia"
+                    }
+                  },
+                  "Property": "Tipo Incidencia"
+                }
+              },
+              "index": 0,
+              "length": 1
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Basic'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

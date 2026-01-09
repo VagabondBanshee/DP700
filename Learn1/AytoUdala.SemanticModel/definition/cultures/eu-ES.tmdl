@@ -1,0 +1,16 @@
+cultureInfo eu-ES
+	translations
+		model Model
+			table 'Nombre Tipo Incidencia'
+				column 'Tipo Incidencia'
+					caption: Gorabehera Mota
+			table 'Nombre Barrio Traducido'
+				column 'Nombre Barrio Traducido'
+					caption: Auzoa
+			table 'Nombre Mes Traducido'
+				column 'Nombre Mes Traducido'
+					caption: Hilabetea
+			table Medidas
+				measure 'Nº de Incidencias'
+					caption: Gorabehera kopurua
+

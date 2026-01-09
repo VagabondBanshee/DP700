@@ -1,0 +1,55 @@
+table 'Nombre Barrio Traducido'
+	lineageTag: 50564334-a32a-4786-ad4f-f4ef206e2d62
+
+	column 'Nombre Barrio Traducido'
+		lineageTag: 5a3b2f3e-80f8-4fc6-b78a-566b8dcd462b
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Nombre Barrio Traducido Orden'
+
+		relatedColumnDetails
+			groupByColumn: 'Nombre Barrio Traducido Campos'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nombre Barrio Traducido Campos'
+		isHidden
+		lineageTag: d5fc6e2b-de2b-4a55-a457-439414970f99
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Nombre Barrio Traducido Orden'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nombre Barrio Traducido Orden'
+		isHidden
+		formatString: 0
+		lineageTag: 01f245c8-7234-4a72-8056-862471a943a1
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column LanguageId
+		lineageTag: 69bb650a-5225-4650-8abb-eb3d83ff1d2c
+		summarizeBy: none
+		sourceColumn: [Value4]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Nombre Barrio Traducido' = calculated
+		mode: import
+		source =
+				{
+				    ("Barrio", NAMEOF('dBarrio'[NombreBarrio_es]), 0,"es"),
+				    ("Barrio", NAMEOF('dBarrio'[NombreBarrio_eu]), 1,"eu")
+				}
+
+	annotation PBI_Id = 33da8c9b5a8f48e88c234ada70e2eb5c
+

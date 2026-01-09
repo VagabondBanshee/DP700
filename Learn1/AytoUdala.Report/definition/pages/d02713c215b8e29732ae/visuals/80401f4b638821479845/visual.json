@@ -1,0 +1,110 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
+  "name": "80401f4b638821479845",
+  "position": {
+    "x": 780.8955223880597,
+    "y": 210.14925373134326,
+    "z": 5,
+    "height": 150.44776119402985,
+    "width": 469.25373134328356,
+    "tabOrder": 4
+  },
+  "visual": {
+    "visualType": "barChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dTipo_Incidencia"
+                    }
+                  },
+                  "Property": "NombreIncidencia_eu"
+                }
+              },
+              "queryRef": "dTipo_Incidencia.NombreIncidencia_eu",
+              "nativeQueryRef": "Tipo Incidencia",
+              "active": true,
+              "displayName": "Tipo Incidencia"
+            }
+          ],
+          "fieldParameters": [
+            {
+              "parameterExpr": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Nombre Tipo Incidencia"
+                    }
+                  },
+                  "Property": "Tipo Incidencia"
+                }
+              },
+              "index": 0,
+              "length": 1
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Nº de Incidencias"
+                }
+              },
+              "queryRef": "Medidas.Nº de Incidencias",
+              "nativeQueryRef": "Nº de Incidencias"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Medidas"
+                  }
+                },
+                "Property": "Nº de Incidencias"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "735bfca7cae16c4d53df",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "Nº de Incidencias"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

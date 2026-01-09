@@ -1,0 +1,31 @@
+model Model
+	culture: es-ES
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-ES
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["dBarrio","dTipo_Incidencia","fHechos_Incidencias","dCalendario","Idiomas","Medidas"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+annotation TranslationsBuilder = Version:2.2-Updated:2025-11-01
+
+annotation __TEdtr = 1
+
+ref table dBarrio
+ref table dTipo_Incidencia
+ref table fHechos_Incidencias
+ref table dCalendario
+ref table Idiomas
+ref table 'Nombre Tipo Incidencia'
+ref table 'Nombre Barrio Traducido'
+ref table 'Nombre Mes Traducido'
+ref table Medidas
+
+ref cultureInfo es-ES
+ref cultureInfo eu-ES
+

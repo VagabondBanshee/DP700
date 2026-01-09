@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
+  "name": "aae2aab7b97a3523fee0",
+  "position": {
+    "x": 0,
+    "y": 386.29993864492945,
+    "z": 1,
+    "height": 150.78622140415462,
+    "width": 281.46761328775528,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dBarrio"
+                    }
+                  },
+                  "Property": "NombreBarrio_eu"
+                }
+              },
+              "queryRef": "dBarrio.NombreBarrio_eu",
+              "nativeQueryRef": "Barrio",
+              "active": true,
+              "displayName": "Barrio"
+            }
+          ],
+          "fieldParameters": [
+            {
+              "parameterExpr": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Nombre Barrio Traducido"
+                    }
+                  },
+                  "Property": "Nombre Barrio Traducido"
+                }
+              },
+              "index": 0,
+              "length": 1
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "general": [
+        {
+          "properties": {}
+        }
+      ],
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Basic'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

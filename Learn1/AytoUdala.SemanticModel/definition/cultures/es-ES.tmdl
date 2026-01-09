@@ -1,0 +1,170 @@
+cultureInfo es-ES
+	translations
+		model Model
+			table dBarrio
+				caption: dBarrio
+				column ID_Barrio
+					caption: ID_Barrio
+				column NombreBarrio_es
+					caption: NombreBarrio_es
+				column NombreBarrio_eu
+					caption: NombreBarrio_eu
+			table dTipo_Incidencia
+				caption: dTipo_Incidencia
+				column ID_TipoIncidencia
+					caption: ID_TipoIncidencia
+				column NombreIncidencia_es
+					caption: NombreIncidencia_es
+				column NombreIncidencia_eu
+					caption: NombreIncidencia_eu
+			table fHechos_Incidencias
+				caption: fHechos_Incidencias
+				column ID_Incidencia
+					caption: ID_Incidencia
+				column FechaApertura
+					caption: FechaApertura
+				column ID_TipoIncidencia
+					caption: ID_TipoIncidencia
+				column ID_Barrio
+					caption: ID_Barrio
+				column TiempoResolucionHoras
+					caption: TiempoResolucionHoras
+			table dCalendario
+				caption: dCalendario
+				column Fecha
+					caption: Fecha
+				column Año
+					caption: Año
+				column Mes
+					caption: Mes
+				column NombreMes_es
+					caption: NombreMes_es
+				column NombreMes_eu
+					caption: NombreMes_eu
+			table Idiomas
+				caption: Idiomas
+				column Language
+					caption: Language
+				column LanguageId
+					caption: LanguageId
+				column SortOrder
+					caption: SortOrder
+			table 'Nombre Tipo Incidencia'
+				column 'Tipo Incidencia'
+					caption: Tipo Incidencia
+				column LanguageId
+					caption: LanguageId
+			table 'Nombre Barrio Traducido'
+				column 'Nombre Barrio Traducido'
+					caption: Barrio
+				column LanguageId
+					caption: LanguageId
+			table 'Nombre Mes Traducido'
+				column 'Nombre Mes Traducido'
+					caption: Mes
+				column LanguageId
+					caption: LanguageId
+			table Medidas
+				caption: Medidas
+				measure 'Nº de Incidencias'
+					caption: Nº de Incidencias
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "dcalendario.nombremes_eu": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dCalendario",
+			          "ConceptualProperty": "NombreMes_eu"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "dtipo_incidencia.nombreincidencia_eu": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dTipo_Incidencia",
+			          "ConceptualProperty": "NombreIncidencia_eu"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "dbarrio.nombrebarrio_eu": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dBarrio",
+			          "ConceptualProperty": "NombreBarrio_eu"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "dbarrio.nombrebarrio_es": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dBarrio",
+			          "ConceptualProperty": "NombreBarrio_es"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "NombreBarrio_es": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dtipo_incidencia.nombreincidencia_es": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dTipo_Incidencia",
+			          "ConceptualProperty": "NombreIncidencia_es"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "NombreIncidencia_es": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dcalendario.nombremes_es": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dCalendario",
+			          "ConceptualProperty": "NombreMes_es"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "NombreMes_es": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

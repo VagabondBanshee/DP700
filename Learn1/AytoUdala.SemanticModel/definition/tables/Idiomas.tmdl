@@ -1,0 +1,37 @@
+table Idiomas
+	lineageTag: 604205a8-e74a-4ffe-849d-0961e4f13b48
+
+	column Language
+		dataType: string
+		lineageTag: 0597a8ea-f0d2-411d-b604-c7e5ef6385ad
+		summarizeBy: none
+		sourceColumn: Language
+
+		annotation SummarizationSetBy = Automatic
+
+	column LanguageId
+		dataType: string
+		lineageTag: 7cbf00bb-6b9a-42e7-b8bd-54c3c09ad254
+		summarizeBy: none
+		sourceColumn: LanguageId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SortOrder
+		dataType: string
+		lineageTag: f4a3e7fa-1f44-49af-90cd-a00c074ce774
+		summarizeBy: none
+		sourceColumn: SortOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Idiomas = m
+		mode: import
+		source =
+				let
+				    Origen = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45Wck4sLknNyUnMy1fSUUotBhKGSrE60UqupcXZqUWJIMFSIGGkFBsLAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Language = _t, LanguageId = _t, SortOrder = _t])
+				in
+				    Origen
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SQLDatabase",
+    "displayName": "DP600_QT_SQL"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "0836d50d-4639-abb1-4a3b-21bce8233e51"
+  }
+}

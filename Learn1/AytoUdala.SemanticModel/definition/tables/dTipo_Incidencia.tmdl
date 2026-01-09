@@ -1,0 +1,42 @@
+table dTipo_Incidencia
+	lineageTag: bc17b96b-2ec2-4b59-ad91-7ac982affdf0
+
+	column ID_TipoIncidencia
+		dataType: int64
+		formatString: 0
+		lineageTag: c2baf1d4-44db-405a-a61c-c04ad027917a
+		summarizeBy: none
+		sourceColumn: ID_TipoIncidencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column NombreIncidencia_es
+		dataType: string
+		lineageTag: 821e40ff-b257-4b7d-b73a-cd2d3f7e04a6
+		summarizeBy: none
+		sourceColumn: NombreIncidencia_es
+
+		annotation SummarizationSetBy = Automatic
+
+	column NombreIncidencia_eu
+		dataType: string
+		lineageTag: 7071900d-a5ee-41ce-8114-40958649fa9f
+		summarizeBy: none
+		sourceColumn: NombreIncidencia_eu
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dTipo_Incidencia = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("BLACKROSEWARRIO", "AyuntamientoNavarraDB"),
+				    dbo_dTipo_Incidencia = Origen{[Schema="dbo",Item="dTipo_Incidencia"]}[Data],
+				    #"Columnas quitadas" = Table.RemoveColumns(dbo_dTipo_Incidencia,{"fHechos_Incidencias"})
+				in
+				    #"Columnas quitadas"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegación
+

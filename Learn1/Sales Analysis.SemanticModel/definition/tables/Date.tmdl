@@ -1,0 +1,72 @@
+table Date
+	lineageTag: e961a954-430b-4bf5-9122-6171f303f1ed
+
+	column DateKey
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: cd6315a1-08f7-464d-a937-ddae6eba6d6d
+		summarizeBy: none
+		sourceColumn: DateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		isNullable: false
+		formatString: Long Date
+		sourceProviderType: date
+		lineageTag: 8627440a-282b-4d49-8a70-f1057775a76a
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Month
+		dataType: string
+		isNullable: false
+		sourceProviderType: nvarchar(10)
+		lineageTag: 86b69b8e-fb05-4633-aa4d-2165f178e1f7
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: tinyint
+		lineageTag: f5a1e595-84ae-45fb-87fd-8c500c0b7a51
+		summarizeBy: none
+		sourceColumn: Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: smallint
+		lineageTag: 7d818d07-0a26-4e36-bb12-a192762161ad
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Date-4d467a8a-7b6b-49c8-9a24-bb9defae042c = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database("localhost", "AdventureWorksDW2022-DP500"),
+				    dbo_DimDate = Source{[Schema="dbo",Item="DimDate"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(dbo_DimDate,{"DateKey", "FullDateAlternateKey", "EnglishMonthName", "FiscalQuarter", "FiscalYear"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Other Columns",{{"FullDateAlternateKey", "Date"}, {"EnglishMonthName", "Month"}, {"FiscalQuarter", "Quarter"}, {"FiscalYear", "Year"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Exception
+

@@ -1,0 +1,30 @@
+relationship 85f703ef-c25e-4206-ad1a-a6380886f885
+	fromColumn: fHechos_Incidencias.ID_Barrio
+	toColumn: dBarrio.ID_Barrio
+
+	annotation PBI_IsFromSource = FS
+
+relationship 0e56e5c5-1747-4c08-90f3-0d93a9bb0a29
+	fromColumn: fHechos_Incidencias.ID_TipoIncidencia
+	toColumn: dTipo_Incidencia.ID_TipoIncidencia
+
+	annotation PBI_IsFromSource = FS
+
+relationship 208426d5-b04b-00aa-cb61-8f1df4e6e9ed
+	fromColumn: fHechos_Incidencias.FechaApertura
+	toColumn: dCalendario.Fecha
+
+	annotation PBI_IsFromSource = FS
+
+relationship 840323df-fb75-96cb-507c-05add51d9bf3
+	fromColumn: 'Nombre Mes Traducido'.LanguageId
+	toColumn: Idiomas.LanguageId
+
+relationship 6da0fb1e-760d-5a3c-0eca-28a35a6b1259
+	fromColumn: 'Nombre Barrio Traducido'.LanguageId
+	toColumn: Idiomas.LanguageId
+
+relationship 6cb9bbc3-09f7-87ee-5506-742cbcb1ac0b
+	fromColumn: 'Nombre Tipo Incidencia'.LanguageId
+	toColumn: Idiomas.LanguageId
+

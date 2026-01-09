@@ -1,0 +1,116 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
+  "name": "459aea909cf0ced54e95",
+  "position": {
+    "x": 315.2238805970149,
+    "y": 438.20895522388059,
+    "z": 6,
+    "height": 244.77611940298507,
+    "width": 678.20895522388059,
+    "tabOrder": 5
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dBarrio"
+                    }
+                  },
+                  "Property": "NombreBarrio_eu"
+                }
+              },
+              "queryRef": "dBarrio.NombreBarrio_eu",
+              "nativeQueryRef": "Barrio",
+              "displayName": "Barrio"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dTipo_Incidencia"
+                    }
+                  },
+                  "Property": "NombreIncidencia_eu"
+                }
+              },
+              "queryRef": "dTipo_Incidencia.NombreIncidencia_eu",
+              "nativeQueryRef": "Tipo Incidencia",
+              "displayName": "Tipo Incidencia"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Nº de Incidencias"
+                }
+              },
+              "queryRef": "Medidas.Nº de Incidencias",
+              "nativeQueryRef": "Nº de Incidencias"
+            }
+          ],
+          "fieldParameters": [
+            {
+              "parameterExpr": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Nombre Tipo Incidencia"
+                    }
+                  },
+                  "Property": "Tipo Incidencia"
+                }
+              },
+              "index": 1,
+              "length": 1
+            },
+            {
+              "parameterExpr": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Nombre Barrio Traducido"
+                    }
+                  },
+                  "Property": "Nombre Barrio Traducido"
+                }
+              },
+              "index": 0,
+              "length": 1
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "f75852f1b8e4ee1f92df",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "Nº de Incidencias"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

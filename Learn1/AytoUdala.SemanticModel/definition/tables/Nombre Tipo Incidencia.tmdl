@@ -1,0 +1,55 @@
+table 'Nombre Tipo Incidencia'
+	lineageTag: e2a4aecd-ba97-4a50-a701-4cbc62ab307b
+
+	column 'Tipo Incidencia'
+		lineageTag: 49cd9917-bce6-4d3e-8601-7e6f9c59882b
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Tipo Incidencia Orden'
+
+		relatedColumnDetails
+			groupByColumn: 'Tipo Incidencia Campos'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tipo Incidencia Campos'
+		isHidden
+		lineageTag: b238697c-26ed-4aff-9d5b-cb8b0d2cf8a1
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Tipo Incidencia Orden'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tipo Incidencia Orden'
+		isHidden
+		formatString: 0
+		lineageTag: df8ed1b9-083b-4071-ade5-5dd15574f1d4
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column LanguageId
+		lineageTag: 6bd713ef-1c7b-4d27-be84-26b93bd98ede
+		summarizeBy: none
+		sourceColumn: [Value4]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Nombre Tipo Incidencia' = calculated
+		mode: import
+		source =
+				{
+				    ("Tipo Incidencia", NAMEOF('dTipo_Incidencia'[NombreIncidencia_es]), 0,"es"),
+				    ("Tipo Incidencia", NAMEOF('dTipo_Incidencia'[NombreIncidencia_eu]), 1,"eu")
+				}
+
+	annotation PBI_Id = 47f3ec7418f54955b6a7fce56ff15676
+

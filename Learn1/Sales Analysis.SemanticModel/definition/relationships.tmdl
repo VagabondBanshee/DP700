@@ -1,0 +1,22 @@
+relationship b978936c-e612-452e-986e-875d792d4e23
+	fromColumn: Sales.OrderDateKey
+	toColumn: Date.DateKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship 46f714a9-fd56-428b-8507-0efc16575cb1
+	fromColumn: Sales.ResellerKey
+	toColumn: Reseller.ResellerKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship b3323454-89cb-4669-a5c7-994aed9f7b81
+	fromColumn: Sales.SalesTerritoryKey
+	toColumn: Territory.SalesTerritoryKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship af6c29d0-f379-46e0-93ab-09a4e275e1e1
+	fromColumn: Sales.ProductKey
+	toColumn: Product.ProductKey
+

@@ -1,0 +1,64 @@
+table fHechos_Incidencias
+	lineageTag: 0f42d3e2-ca4b-43ca-b31b-e8b231adff2d
+
+	column ID_Incidencia
+		dataType: int64
+		formatString: 0
+		lineageTag: c24d5dcc-5a2c-493e-8286-352452d5a1f3
+		summarizeBy: sum
+		sourceColumn: ID_Incidencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column FechaApertura
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 89c759b7-89d4-4de3-a9d7-c2c91c39955e
+		summarizeBy: none
+		sourceColumn: FechaApertura
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ID_TipoIncidencia
+		dataType: int64
+		formatString: 0
+		lineageTag: f84aa076-0b43-488f-ac0b-c9431bb70961
+		summarizeBy: none
+		sourceColumn: ID_TipoIncidencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_Barrio
+		dataType: int64
+		formatString: 0
+		lineageTag: 7c7c415c-fd6e-4729-bc4c-c1ce263dae1e
+		summarizeBy: none
+		sourceColumn: ID_Barrio
+
+		annotation SummarizationSetBy = Automatic
+
+	column TiempoResolucionHoras
+		dataType: int64
+		formatString: 0
+		lineageTag: 37df7bf4-2540-4404-8b2b-210f3a6d1871
+		summarizeBy: sum
+		sourceColumn: TiempoResolucionHoras
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fHechos_Incidencias = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("BLACKROSEWARRIO", "AyuntamientoNavarraDB"),
+				    dbo_fHechos_Incidencias = Origen{[Schema="dbo",Item="fHechos_Incidencias"]}[Data],
+				    #"Otras columnas quitadas" = Table.SelectColumns(dbo_fHechos_Incidencias,{"ID_Incidencia", "FechaApertura", "ID_TipoIncidencia", "ID_Barrio", "TiempoResolucionHoras"})
+				in
+				    #"Otras columnas quitadas"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegación
+

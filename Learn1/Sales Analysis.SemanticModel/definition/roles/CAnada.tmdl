@@ -1,0 +1,7 @@
+role CAnada
+	modelPermission: read
+
+	tablePermission Territory = [Region] = "Canada"
+
+	annotation PBI_Id = 00fbb73931414664bf4694e7ee551ee8
+

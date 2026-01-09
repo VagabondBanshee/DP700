@@ -1,0 +1,25 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBIDesktopVersion = 2.116.966.0 (23.04)
+
+annotation PBI_QueryOrder = ["Date","Product","Reseller","Territory","Sales"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+ref table Date
+ref table Product
+ref table Reseller
+ref table Territory
+ref table Sales
+
+ref role CAnada
+ref role Australia
+
+ref cultureInfo en-US
+

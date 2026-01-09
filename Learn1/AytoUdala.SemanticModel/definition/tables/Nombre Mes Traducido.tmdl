@@ -1,0 +1,55 @@
+table 'Nombre Mes Traducido'
+	lineageTag: 0756118a-e6a2-432f-93fc-8a1378a2e569
+
+	column 'Nombre Mes Traducido'
+		lineageTag: cc0f258f-d008-4ee6-9975-dc7ca89e3e39
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parámetro Orden'
+
+		relatedColumnDetails
+			groupByColumn: 'Parámetro Campos'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parámetro Campos'
+		isHidden
+		lineageTag: 2e3e6e7b-0f22-494d-b882-b05e2e78ee70
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parámetro Orden'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parámetro Orden'
+		isHidden
+		formatString: 0
+		lineageTag: 621d2c78-35bb-4b31-9f56-c2e0e345ee10
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column LanguageId
+		lineageTag: 049ef6a1-10a9-4561-b1bd-e59f201e232d
+		summarizeBy: none
+		sourceColumn: [Value4]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Nombre Mes Traducido' = calculated
+		mode: import
+		source =
+				{
+				    ("Mes", NAMEOF('dCalendario'[NombreMes_es]), 0,"es"),
+				    ("Mes", NAMEOF('dCalendario'[NombreMes_eu]), 1,"eu")
+				}
+
+	annotation PBI_Id = f59cf31f70fa421e9e55891cf423fa31
+

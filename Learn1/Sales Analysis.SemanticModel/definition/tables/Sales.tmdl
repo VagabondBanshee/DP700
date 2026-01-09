@@ -1,0 +1,97 @@
+table Sales
+	lineageTag: f6ce88dd-8e87-4527-a6a1-1cba34746b6f
+
+	column ResellerKey
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 716459cd-b740-4c14-b7c3-ebf4e1ade750
+		summarizeBy: none
+		sourceColumn: ResellerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductKey
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: f6a0d8f9-5091-405f-8b44-408633bfe04f
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderDateKey
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 4d2b1900-bf5d-44bd-971e-2ec1df9b9edc
+		summarizeBy: none
+		sourceColumn: OrderDateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesTerritoryKey
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 28ddbc31-cba2-497f-b566-3aef87513db1
+		summarizeBy: none
+		sourceColumn: SalesTerritoryKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: smallint
+		lineageTag: dc2dd5a9-a5ae-4fb4-8474-7933bc984387
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Price
+		dataType: decimal
+		isNullable: false
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		sourceProviderType: money
+		lineageTag: 149bc4d9-2fec-442c-adaa-5440aec0b569
+		summarizeBy: sum
+		sourceColumn: Price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column Revenue
+		dataType: double
+		sourceProviderType: money
+		lineageTag: b1d07e40-9d13-471a-a421-658612b82acb
+		summarizeBy: sum
+		sourceColumn: Revenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Sales-4900aa66-9982-430e-b7ee-ad1807ae32b2 = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database("localhost", "AdventureWorksDW2022-DP500"),
+				    dbo_FactResellerSales = Source{[Schema="dbo",Item="FactResellerSales"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(dbo_FactResellerSales,{"ResellerKey", "ProductKey", "OrderDateKey", "SalesTerritoryKey", "OrderQuantity", "UnitPrice"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Other Columns",{{"OrderQuantity", "Quantity"}, {"UnitPrice", "Price"}}),
+				    #"Added Custom" = Table.AddColumn(#"Renamed Columns", "Revenue", each [Quantity] * [Price]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Added Custom",{{"Revenue", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Exception
+

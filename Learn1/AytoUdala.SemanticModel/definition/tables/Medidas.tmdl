@@ -1,0 +1,34 @@
+table Medidas
+	lineageTag: dddb842a-a202-4a1f-82fe-35284e084202
+
+	measure 'Nº de Incidencias' = COUNTROWS(fHechos_Incidencias)
+		formatString: 0
+		lineageTag: 0479c319-cfe3-4a2d-b8c4-65ec67ae422d
+
+	measure 'URL Castellano' =
+			
+			VAR BaseURL = "https://app.powerbi.com/groups/29e4bc80-cccb-43e5-ad04-7883dbc53dab/reports/f777daf3-774e-4ef5-a4f3-282d5ba348fc/d02713c215b8e29732ae" // TU URL BASE
+			VAR Idioma = "?language=es-ES"
+			VAR Marcador = "&bookmarkGuid=704fea345fbaa74f5dd9" // PEGA EL GUID AQUÍ
+			RETURN BaseURL & Idioma & Marcador
+		lineageTag: 8abe66fe-7207-41c5-9165-3a8be889c0db
+
+	measure 'URL Euskera' =
+			
+			VAR BaseURL = "https://app.powerbi.com/groups/29e4bc80-cccb-43e5-ad04-7883dbc53dab/reports/f777daf3-774e-4ef5-a4f3-282d5ba348fc/d02713c215b8e29732ae" // TU URL BASE
+			VAR Idioma = "?language=eu-ES"
+			VAR Marcador = "&bookmarkGuid=9c59d60ff49b7fc63b18" // PEGA EL GUID AQUÍ
+			RETURN BaseURL & Idioma & Marcador
+		lineageTag: 75803798-f387-4755-ae7b-2fdfead1ff6f
+
+	partition Medidas = m
+		mode: import
+		source =
+				let
+				    Origen = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Columna1 = _t]),
+				    #"Columnas quitadas" = Table.RemoveColumns(Origen,{"Columna1"})
+				in
+				    #"Columnas quitadas"
+
+	annotation PBI_ResultType = Table
+

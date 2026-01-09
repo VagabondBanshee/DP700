@@ -1,0 +1,47 @@
+table Reseller
+	lineageTag: d2c71fb0-97f3-4728-9f1b-dc729909925e
+
+	column ResellerKey
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: a14dc5f7-160b-48ca-9820-abf919b6b567
+		summarizeBy: none
+		sourceColumn: ResellerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Business Type'
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(20)
+		lineageTag: dbbb5ceb-b56e-4780-b2f8-7370f531e42f
+		summarizeBy: none
+		sourceColumn: Business Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Reseller
+		dataType: string
+		isNullable: false
+		sourceProviderType: nvarchar(50)
+		lineageTag: 23264ff7-4439-4dbc-aad2-7df2fb96a903
+		summarizeBy: none
+		sourceColumn: Reseller
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Reseller-43f26521-5c86-43d0-8ceb-6564a1674027 = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database("localhost", "AdventureWorksDW2022-DP500"),
+				    dbo_DimReseller = Source{[Schema="dbo",Item="DimReseller"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(dbo_DimReseller,{"ResellerKey", "BusinessType", "ResellerName"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Other Columns",{{"BusinessType", "Business Type"}, {"ResellerName", "Reseller"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Exception
+
