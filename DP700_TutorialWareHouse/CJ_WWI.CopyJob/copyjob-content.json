@@ -1,0 +1,58 @@
+{
+  "properties": {
+    "jobMode": "Batch",
+    "source": {
+      "type": "Parquet",
+      "connectionSettings": {
+        "type": "AzureBlobStorage",
+        "typeProperties": {
+          "containerUri": "https://azureopendatastorage.blob.core.windows.net/nyctlc"
+        }
+      }
+    },
+    "destination": {
+      "type": "DataWarehouseTable",
+      "connectionSettings": {
+        "type": "DataWarehouse",
+        "typeProperties": {
+          "workspaceId": "cda65b5e-066b-49b9-8dd8-f5adbf875fd3",
+          "artifactId": "7067efdc-4b93-4e05-823c-55a3b36afab0",
+          "endPoint": "2gz2ldcmujaujkpkqzwwa22cku-lzn2ntlla24utdoy6ww37b272m.datawarehouse.fabric.microsoft.com"
+        }
+      }
+    },
+    "policy": {
+      "timeout": "0.12:00:00"
+    }
+  },
+  "activities": [
+    {
+      "id": "efae8a3c-b9bf-4123-8e31-c2b09cf0f845",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "location": {
+              "type": "AzureBlobStorageLocation",
+              "container": "nyctlc"
+            },
+            "compressionCodec": "snappy"
+          },
+          "storeSettings": {
+            "recursive": false,
+            "wildcardFolderPath": "green/puYear=*/puMonth=*",
+            "wildcardFileName": "*.parquet",
+            "enablePartitionDiscovery": false
+          }
+        },
+        "destination": {
+          "tableOption": "autoCreate",
+          "datasetSettings": {
+            "schema": "dbo",
+            "table": "NYC_Taxi"
+          }
+        },
+        "enableStaging": false
+      }
+    }
+  ]
+}
