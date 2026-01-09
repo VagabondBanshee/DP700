@@ -1,0 +1,60 @@
+{
+  "config": "{\"version\":\"5.69\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY25SU12\",\"version\":{\"visual\":\"2.5.0\",\"report\":\"3.1.0\",\"page\":\"2.3.0\"},\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY25SU12",
+            "path": "BaseThemes/CY25SU12.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Página 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "4235fa108a741e2c7d0c",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"24f4e023b455e4e240a7\",\"layouts\":[{\"id\":0,\"position\":{\"x\":9.504996446648972,\"y\":0,\"z\":0,\"width\":680.7953704912327,\"height\":390.892978868439,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"clusteredColumnChart\",\"projections\":{\"Y\":[{\"queryRef\":\"Sum(fact_sale.Profit)\"}],\"Category\":[{\"queryRef\":\"dimension_city.SalesTerritory\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"fact_sale\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"dimension_city\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Profit\"}},\"Function\":0},\"Name\":\"Sum(fact_sale.Profit)\",\"NativeReferenceName\":\"Suma de Profit\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"SalesTerritory\"},\"Name\":\"dimension_city.SalesTerritory\",\"NativeReferenceName\":\"SalesTerritory\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Profit\"}},\"Function\":0}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 390.89,
+          "width": 680.80,
+          "x": 9.50,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"8d6afa551bdb4334b6bc\",\"layouts\":[{\"id\":0,\"position\":{\"x\":690.3003669378817,\"y\":24.950615672453555,\"z\":2,\"width\":589.3097796922364,\"height\":686.7359932703883,\"tabOrder\":2}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"dimension_city.SalesTerritory\"},{\"queryRef\":\"dimension_city.StateProvince\"},{\"queryRef\":\"Sum(fact_sale.Profit)\"},{\"queryRef\":\"Sum(fact_sale.TotalExcludingTax)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dimension_city\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"fact_sale\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"SalesTerritory\"},\"Name\":\"dimension_city.SalesTerritory\",\"NativeReferenceName\":\"SalesTerritory\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"StateProvince\"},\"Name\":\"dimension_city.StateProvince\",\"NativeReferenceName\":\"StateProvince\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Profit\"}},\"Function\":0},\"Name\":\"Sum(fact_sale.Profit)\",\"NativeReferenceName\":\"Suma de Profit\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"TotalExcludingTax\"}},\"Function\":0},\"Name\":\"Sum(fact_sale.TotalExcludingTax)\",\"NativeReferenceName\":\"Suma de TotalExcludingTax\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"StateProvince\"}}}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 686.74,
+          "width": 589.31,
+          "x": 690.30,
+          "y": 24.95,
+          "z": 2.00
+        },
+        {
+          "config": "{\"name\":\"b3b99fc39e53a1cd9944\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":390.892978868439,\"z\":1,\"width\":677.2309968237394,\"height\":329.1105019652207,\"tabOrder\":1}}],\"singleVisual\":{\"visualType\":\"azureMap\",\"projections\":{\"Category\":[{\"queryRef\":\"dimension_city.StateProvince\",\"active\":true}],\"Size\":[{\"queryRef\":\"Sum(fact_sale.Profit)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dimension_city\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"fact_sale\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"StateProvince\"},\"Name\":\"dimension_city.StateProvince\",\"NativeReferenceName\":\"StateProvince\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Profit\"}},\"Function\":0},\"Name\":\"Sum(fact_sale.Profit)\",\"NativeReferenceName\":\"Suma de Profit\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"mapControls\":[{\"properties\":{\"zoom\":{\"expr\":{\"Literal\":{\"Value\":\"1.39D\"}}},\"centerLatitude\":{\"expr\":{\"Literal\":{\"Value\":\"46.16461250485392D\"}}},\"centerLongitude\":{\"expr\":{\"Literal\":{\"Value\":\"-74.2993974685669D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 329.11,
+          "width": 677.23,
+          "x": 0.00,
+          "y": 390.89,
+          "z": 1.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

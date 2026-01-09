@@ -1,0 +1,281 @@
+table fact_sale
+	lineageTag: 39982b35-6309-48eb-bba1-a30c5ad82bc9
+	sourceLineageTag: [dbo].[fact_sale]
+
+	column SaleKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: e38eab3d-402b-4a6b-a38e-6d0e4b5f3437
+		sourceLineageTag: SaleKey
+		summarizeBy: count
+		sourceColumn: SaleKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column CityKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 21b49cac-78cb-4864-9c2a-060e8011ba49
+		sourceLineageTag: CityKey
+		summarizeBy: none
+		sourceColumn: CityKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 91a6be2e-3d34-4f94-9160-2e06c466f565
+		sourceLineageTag: CustomerKey
+		summarizeBy: count
+		sourceColumn: CustomerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column BillToCustomerKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 6f26b676-304f-42da-bc64-0da19a283b5c
+		sourceLineageTag: BillToCustomerKey
+		summarizeBy: count
+		sourceColumn: BillToCustomerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column StockItemKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 60a7661c-d6a1-4588-82a6-35fcc69f7b38
+		sourceLineageTag: StockItemKey
+		summarizeBy: count
+		sourceColumn: StockItemKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column InvoiceDateKey
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: a3b6ff2d-eb2a-4d4a-8d9a-66232a638541
+		sourceLineageTag: InvoiceDateKey
+		summarizeBy: none
+		sourceColumn: InvoiceDateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column DeliveryDateKey
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 571cc2ef-bc6a-4e91-8667-e8f968b6da58
+		sourceLineageTag: DeliveryDateKey
+		summarizeBy: none
+		sourceColumn: DeliveryDateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalespersonKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 80ba066c-8fc9-40fa-afe4-3e8e625c803d
+		sourceLineageTag: SalespersonKey
+		summarizeBy: count
+		sourceColumn: SalespersonKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column WWIInvoiceID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 5c54cdce-2c8b-419d-bc03-58c68f491568
+		sourceLineageTag: WWIInvoiceID
+		summarizeBy: count
+		sourceColumn: WWIInvoiceID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a9032eb4-7b21-47da-927c-551ecb17a2cf
+		sourceLineageTag: Description
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column Package
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 7fedd4cc-474a-4a32-a3a3-16819d8edee5
+		sourceLineageTag: Package
+		summarizeBy: none
+		sourceColumn: Package
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 3f701f94-7950-4350-a29f-549f03036aaf
+		sourceLineageTag: Quantity
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitPrice
+		dataType: double
+		sourceProviderType: decimal(18, 2)
+		lineageTag: d9575093-1e55-4c25-b4d2-95cad96b4ec8
+		sourceLineageTag: UnitPrice
+		summarizeBy: sum
+		sourceColumn: UnitPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxRate
+		dataType: double
+		sourceProviderType: decimal(18, 3)
+		lineageTag: e94e0df3-d0b5-4cc1-9e1d-a7b10889b592
+		sourceLineageTag: TaxRate
+		summarizeBy: sum
+		sourceColumn: TaxRate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TotalExcludingTax
+		dataType: double
+		sourceProviderType: decimal(29, 2)
+		lineageTag: ec0b8b18-1410-4531-a919-2f1181eb519f
+		sourceLineageTag: TotalExcludingTax
+		summarizeBy: sum
+		sourceColumn: TotalExcludingTax
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxAmount
+		dataType: double
+		sourceProviderType: decimal(38, 6)
+		lineageTag: dd704cba-0753-4558-aa09-027de4c7c9f5
+		sourceLineageTag: TaxAmount
+		summarizeBy: sum
+		sourceColumn: TaxAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Profit
+		dataType: double
+		sourceProviderType: decimal(18, 2)
+		lineageTag: 471496fd-125f-4b76-ab6d-e5fd58e2a423
+		sourceLineageTag: Profit
+		summarizeBy: sum
+		sourceColumn: Profit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TotalIncludingTax
+		dataType: double
+		sourceProviderType: decimal(38, 6)
+		lineageTag: 7d4e3c83-e364-4508-b996-edf2e723d30b
+		sourceLineageTag: TotalIncludingTax
+		summarizeBy: sum
+		sourceColumn: TotalIncludingTax
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TotalDryItems
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: be2f44fc-35d4-438f-802d-2d1fb414e12a
+		sourceLineageTag: TotalDryItems
+		summarizeBy: sum
+		sourceColumn: TotalDryItems
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalChillerItems
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 9dbb972f-70e9-45b1-b8bb-5ae1686c163d
+		sourceLineageTag: TotalChillerItems
+		summarizeBy: sum
+		sourceColumn: TotalChillerItems
+
+		annotation SummarizationSetBy = Automatic
+
+	column LineageKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 7d75a9f8-5c9f-41d8-8d20-f6c8196ef229
+		sourceLineageTag: LineageKey
+		summarizeBy: count
+		sourceColumn: LineageKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 10b71cf3-42c3-4875-ade4-24675eec67fd
+		sourceLineageTag: Month
+		summarizeBy: sum
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 19134aaa-fa00-4a9d-a408-96c0808cadc4
+		sourceLineageTag: Year
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: d8075c38-8808-4426-81e9-2d6698ea1450
+		sourceLineageTag: Quarter
+		summarizeBy: sum
+		sourceColumn: Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_sale = entity
+		mode: directLake
+		source
+			entityName: fact_sale
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+
