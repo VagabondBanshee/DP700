@@ -1,0 +1,8 @@
+relationship 51ae0894-901c-71f9-d904-0f4a41ed1a54
+	fromColumn: ft_temperaturas_estacion_dia.codigoNacional
+	toColumn: dimEstacionesMeterologicas.CodigoNacional
+
+relationship 251ec6b5-f657-dfa5-d84e-68407be6e9da
+	fromColumn: dimtiempo_fecha_hora.fecha
+	toColumn: ft_temperaturas_estacion_dia.fecha
+

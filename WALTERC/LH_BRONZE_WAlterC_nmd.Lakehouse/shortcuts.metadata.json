@@ -1,0 +1,26 @@
+[
+  {
+    "name": "temperatura_minima",
+    "path": "/Tables",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/temperatura_minima",
+        "itemId": "52efceec-e1d7-4962-985d-9d71704ab2cd",
+        "workspaceId": "a6b99220-13b0-4034-a6dd-9aa70312e882"
+      }
+    }
+  },
+  {
+    "name": "temperatura_maxima",
+    "path": "/Tables",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/temperatura_maxima",
+        "itemId": "52efceec-e1d7-4962-985d-9d71704ab2cd",
+        "workspaceId": "a6b99220-13b0-4034-a6dd-9aa70312e882"
+      }
+    }
+  }
+]

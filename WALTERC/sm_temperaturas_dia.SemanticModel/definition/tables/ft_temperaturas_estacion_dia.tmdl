@@ -1,0 +1,66 @@
+table ft_temperaturas_estacion_dia
+	lineageTag: 8d759a16-f558-48cd-802c-d715dbf95b41
+	sourceLineageTag: [dbo].[ft_temperaturas_estacion_dia]
+
+	measure 'MAxma Temeperatura' = MAX(ft_temperaturas_estacion_dia[TMAXIMA])
+		lineageTag: 80fb7913-c01f-45bd-b34d-a67819416eca
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fecha
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 0a4a4a14-6d61-456a-914b-0cfd1dd3d762
+		sourceLineageTag: fecha
+		summarizeBy: none
+		sourceColumn: fecha
+
+		annotation SummarizationSetBy = Automatic
+
+	column TMAXIMA
+		dataType: double
+		sourceProviderType: float
+		lineageTag: d73201ba-e596-46c6-a355-85ac070a1c77
+		sourceLineageTag: TMAXIMA
+		summarizeBy: sum
+		sourceColumn: TMAXIMA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TMINIMA
+		dataType: double
+		sourceProviderType: float
+		lineageTag: c5cbc750-ee83-45bc-8932-96d147f8d1cd
+		sourceLineageTag: TMINIMA
+		summarizeBy: sum
+		sourceColumn: TMINIMA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column codigoNacional
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 38bb01a0-ea62-45f4-b85f-66b1bd3f2360
+		sourceLineageTag: codigoNacional
+		summarizeBy: none
+		sourceColumn: codigoNacional
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ft_temperaturas_estacion_dia = entity
+		mode: directLake
+		source
+			entityName: ft_temperaturas_estacion_dia
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "MLExperiment",
+    "displayName": "nb_entrenamiento_temperaturas"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f6461724-c7c5-8d81-4ab0-d52a039635bb"
+  }
+}

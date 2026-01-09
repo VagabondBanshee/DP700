@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "sm_temperaturas_dia"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "920e008f-e47c-bf97-4ab5-b5b7ee1e5673"
+  }
+}

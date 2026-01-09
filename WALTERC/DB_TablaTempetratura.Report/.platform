@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "DB_TablaTempetratura"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e0451f44-ed01-b9f7-4d77-1da6d1b88d3c"
+  }
+}

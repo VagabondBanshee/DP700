@@ -1,0 +1,38 @@
+[
+  {
+    "uniqueIdentifier": "3a5845e5-5708-4b3a-9426-35a1da616ed9",
+    "payload": {
+      "name": "EventStream",
+      "metadata": {
+        "eventstreamArtifactId": "b0aa4e56-b79b-4146-ba02-d0b59e0902bc"
+      }
+    },
+    "type": "eventstreamSource-v1"
+  },
+  {
+    "uniqueIdentifier": "9ef6e45c-b827-4246-bda5-e705c08954b7",
+    "payload": {
+      "name": "ES_WalterC-stream event",
+      "definition": {
+        "type": "Event",
+        "instance": "{\"templateId\":\"SourceEvent\",\"templateVersion\":\"1.1\",\"steps\":[{\"name\":\"SourceEventStep\",\"id\":\"13eed95a-a738-4933-87d3-fd0be21ce437\",\"rows\":[{\"name\":\"SourceSelector\",\"kind\":\"SourceReference\",\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"3a5845e5-5708-4b3a-9426-35a1da616ed9\"}]}]}]}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "ff980f29-72fd-4967-9fab-2f89f23857a3",
+    "payload": {
+      "name": "Alerta ES_WalterC-stream event",
+      "definition": {
+        "type": "Rule",
+        "instance": "{\"steps\":[{\"id\":\"1178bbf4-a254-47fd-98ea-d12de201ffcc\",\"name\":\"FieldsDefaultsStep\",\"rows\":[{\"arguments\":[{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"9ef6e45c-b827-4246-bda5-e705c08954b7\"}],\"kind\":\"EventReference\",\"name\":\"event\",\"type\":\"complex\"}],\"kind\":\"Event\",\"name\":\"EventSelector\"}]},{\"id\":\"58de2fde-b85e-48ff-9025-37a01a23c912\",\"name\":\"EventDetectStep\",\"rows\":[{\"arguments\":[],\"kind\":\"OnEveryValue\",\"name\":\"OnEveryValue\"}]},{\"id\":\"65c13fc5-4a02-4fd3-8048-1af06820271f\",\"name\":\"ActStep\",\"rows\":[{\"arguments\":[{\"name\":\"messageLocale\",\"type\":\"string\",\"value\":\"en-us\"},{\"name\":\"sentTo\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"quique@banshee86.es\"}]},{\"name\":\"copyTo\",\"type\":\"array\",\"values\":[]},{\"name\":\"bCCTo\",\"type\":\"array\",\"values\":[]},{\"name\":\"subject\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"Alerta de Activator Alerta ES_WalterC-stream event\"}]},{\"name\":\"headline\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"La condición para \\\"Alerta ES_WalterC-stream event\\\" se ha cumplido.\"}]},{\"name\":\"optionalMessage\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"\"}]},{\"name\":\"additionalInformation\",\"type\":\"array\",\"values\":[]}],\"kind\":\"EmailMessage\",\"name\":\"EmailBinding\"}]}],\"templateId\":\"EventTrigger\",\"templateVersion\":\"1.2.2\"}",
+        "settings": {
+          "shouldRun": false,
+          "shouldApplyRuleOnUpdate": false
+        }
+      }
+    },
+    "type": "timeSeriesView-v1"
+  }
+]

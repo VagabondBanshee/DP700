@@ -1,0 +1,496 @@
+{
+  "sources": [
+    {
+      "id": "34419ba2-fe4a-4105-a41b-e377226750e0",
+      "name": "StockMarket",
+      "type": "SampleData",
+      "properties": {
+        "type": "StockMarket"
+      }
+    }
+  ],
+  "destinations": [
+    {
+      "id": "3a5845e5-5708-4b3a-9426-35a1da616ed9",
+      "name": "4Iw4C60JOeR5t9Zy8ycU6G-45fb3b34-68ef-4cde-835f-4a1fab9b7ede",
+      "type": "Activator",
+      "properties": {
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "ab9b7ede-4a1f-835f-4cde-68ef45fb3b34",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "ES_WalterC-stream"
+        }
+      ]
+    },
+    {
+      "id": "4f5f5ddb-ef23-478e-b151-2086951534b7",
+      "name": "Eventhouse",
+      "type": "Eventhouse",
+      "properties": {
+        "dataIngestionMode": "ProcessedIngestion",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "09f56282-5a93-88b2-40b0-8eb59fce81d6",
+        "databaseName": "EH_WAlterC",
+        "tableName": "accionesBolsa",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "ManageFields"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "ManageFields",
+          "schema": {
+            "columns": [
+              {
+                "name": "time",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "symbol",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "sector",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "securityType",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "bidPrice",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "bidSize",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "lastUpdated",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "lastSalePrice",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "lastSaleSize",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "lastSaleTime",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "volume",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "eb3c28d1-06fb-4c9d-bca7-03ebc12cf329",
+      "name": "CapaFriaLambda",
+      "type": "Lakehouse",
+      "properties": {
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "9d49b980-5c4d-b1f5-43b6-a5870d168bb8",
+        "schema": "",
+        "deltaTable": "streaming_bolsa",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "ManageFields"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "ManageFields",
+          "schema": {
+            "columns": [
+              {
+                "name": "time",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "symbol",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "sector",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "securityType",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "bidPrice",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "bidSize",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "lastUpdated",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "lastSalePrice",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "lastSaleSize",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "lastSaleTime",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "volume",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "streams": [
+    {
+      "id": "b693e2da-a62f-46ac-b633-dc509d5c8bb3",
+      "name": "ES_WalterC-stream",
+      "type": "DefaultStream",
+      "properties": {},
+      "inputNodes": [
+        {
+          "name": "StockMarket"
+        }
+      ]
+    }
+  ],
+  "operators": [
+    {
+      "name": "ManageFields",
+      "type": "ManageFields",
+      "inputNodes": [
+        {
+          "name": "ES_WalterC-stream"
+        }
+      ],
+      "properties": {
+        "columns": [
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "time",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "time"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "symbol",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "symbol"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "sector",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "sector"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "securityType",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "securityType"
+          },
+          {
+            "type": "Cast",
+            "properties": {
+              "targetDataType": "Float",
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "bidPrice",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "bidPrice"
+          },
+          {
+            "type": "Cast",
+            "properties": {
+              "targetDataType": "Float",
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "bidSize",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "bidSize"
+          },
+          {
+            "type": "Cast",
+            "properties": {
+              "targetDataType": "BigInt",
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "lastUpdated",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "lastUpdated"
+          },
+          {
+            "type": "Cast",
+            "properties": {
+              "targetDataType": "Float",
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "lastSalePrice",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "lastSalePrice"
+          },
+          {
+            "type": "Cast",
+            "properties": {
+              "targetDataType": "Float",
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "lastSaleSize",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "lastSaleSize"
+          },
+          {
+            "type": "Cast",
+            "properties": {
+              "targetDataType": "BigInt",
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "lastSaleTime",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "lastSaleTime"
+          },
+          {
+            "type": "Cast",
+            "properties": {
+              "targetDataType": "Float",
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "volume",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "volume"
+          }
+        ]
+      },
+      "inputSchemas": [
+        {
+          "name": "ES_WalterC-stream",
+          "schema": {
+            "columns": [
+              {
+                "name": "time",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "symbol",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "sector",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "securityType",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "bidPrice",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "bidSize",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "askPrice",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "askSize",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "lastUpdated",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "lastSalePrice",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "lastSaleSize",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "lastSaleTime",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "volume",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "marketPercent",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "seq",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "compatibilityLevel": "1.1"
+}
